@@ -35,8 +35,8 @@ const HeroSlider = ({ slides }: IProps) => {
         }}
         modules={[Autoplay, Pagination, Navigation]}
       >
-        {slides.map(({ heading, img, subHeading }) => (
-          <SwiperSlide>
+        {slides.map(({ heading, img, subHeading }, idx) => (
+          <SwiperSlide key={`${heading}-${idx}`}>
             <div className="lg:h-[500px] flex flex-col lg:flex-row 1xl:pl-[130px] text-white">
               <div className="w-full max-w-[420px] px-4 lg:px-0 pb-14 lg:pb-0 pt-14 order-2 lg:order-1">
                 <h3

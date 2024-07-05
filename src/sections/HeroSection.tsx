@@ -22,7 +22,7 @@ const HeroSection = () => {
     <section className="bg-gradient-to-r from-primaryGreen to-secondaryGreen">
       <div className="hidden">
         {sliderSlides.map((slide, index) => (
-          <div>
+          <div key={index}>
             {index === 0 ? <h1>{slide.heading}</h1> : <h2>{slide.heading}</h2>}
             <p>{slide.subHeading}</p>
           </div>

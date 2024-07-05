@@ -47,8 +47,11 @@ const ComplexServices = () => {
           </h2>
         </div>
         <div>
-          {complexServices.map((service) => (
-            <div className="bg-[#F3F9F4] mt-5 p-6 lg:p-8 rounded-[0.5rem] flex items-center">
+          {complexServices.map((service, idx) => (
+            <div
+              key={`${service.name}-${idx}`}
+              className="bg-[#F3F9F4] mt-5 p-6 lg:p-8 rounded-[0.5rem] flex items-center"
+            >
               <div className="mr-8">{service.icon()}</div>
               <div>
                 <p className="font-bold uppercase">{service.name}</p>

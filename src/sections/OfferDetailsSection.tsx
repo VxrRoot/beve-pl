@@ -37,8 +37,8 @@ const OfferDetailsSection = () => {
         </div>
         <div className="flex flex-col mt-10 lg:mt-0 lg:flex-row lg:pt-12">
           <div className="flex-1 grid grid-cols-1 gap-4 md:grid-cols-2 lg:pr-16 grid-rows-auto">
-            {adventages.map((item: string) => (
-              <AdvantageItem text={item} />
+            {adventages.map((item: string, idx) => (
+              <AdvantageItem key={`${item}-${idx}`} text={item} />
             ))}
           </div>
           <div className="lg:w-[17.31rem] w-full bg-red-400 mt-10 lg:mt-0">
