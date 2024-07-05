@@ -4,4 +4,6 @@ export const links = {
   aboutCup: "/#o-kubkach",
   services: "/uslugi",
   contact: "/kontakt",
+  privacyPolicy: "/polityka-prywatnosci",
+  kreatywnyB: "https://www.kreatywnybrand.pl/",
 };

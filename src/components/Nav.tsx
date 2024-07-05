@@ -70,7 +70,10 @@ export default function Nav() {
           className="fixed left-0 top-0  z-40 flex h-screen
           w-full flex-col items-center  justify-center  gap-24 bg-white text-2xl font-bold"
         >
-          <NavLinks className="flex flex-col gap-24 text-lg " isMobile={true} />
+          <NavLinks
+            className="flex flex-col gap-24 text-lg w-full items-center"
+            isMobile={true}
+          />
         </motion.div>
       )}
 

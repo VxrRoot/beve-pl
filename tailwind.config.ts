@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        "1xl": "1180px",
+        "3xl": "1440px",
+      },
       colors: {
         primaryGreen: "#017B39",
         secondaryGreen: "#97C11F",

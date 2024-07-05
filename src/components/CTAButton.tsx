@@ -9,10 +9,10 @@ const mono = DM_Mono({ weight: ["500"], subsets: [] });
 const CTAButton = () => {
   return (
     <Link
-      className={`${mono.className} w-[252px] flex items-center justify-center shadow-button-cta-shadow tracking-[1.06px] py-3 px-6 rounded-[6px] bg-secondaryGreen text-white uppercase`}
+      className={`${mono.className} whitespace-nowrap w-[252px] flex items-center justify-center shadow-button-cta-shadow tracking-[1.06px] py-3  rounded-[6px] bg-secondaryGreen text-white uppercase`}
       href={links.contact}
     >
-      Wyceń zamówienie <ArrowUpRight className="ml-2" />
+      Wyceń zamówienie <ArrowUpRight className="ml-2 " />
     </Link>
   );
 };

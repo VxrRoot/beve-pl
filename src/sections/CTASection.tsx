@@ -13,7 +13,7 @@ const CTASection = () => {
   return (
     <section>
       <ContainerLayout>
-        <div className="relative rounded-[18px] p-8 lg:p-16 bg-gradient-to-r from-primaryGreen via to-secondaryGreen">
+        <div className="overflow-hidden relative rounded-[18px] p-6 lg:p-16 bg-gradient-to-r from-primaryGreen to-secondaryGreen">
           <div>
             <div className="flex flex-col mt-16 lg:mt-0">
               <h2
@@ -27,7 +27,7 @@ const CTASection = () => {
               </p>
               <CTAButton />
             </div>
-            <div className="border-primaryGray border-t flex flex-col lg:flex-row gap-4 pt-4 mt-12 lg:mt-20">
+            <div className="border-primaryGray/20 border-t flex flex-col lg:flex-row gap-4 pt-4 mt-12 lg:mt-20">
               <a href="" className="flex text-white gap-2 items-center">
                 <Phone className="w-4 h-4" /> + 48 123 456 789
               </a>
