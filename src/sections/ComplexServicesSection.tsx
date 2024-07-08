@@ -52,7 +52,7 @@ const complexServices = [
 
 const ComplexServices = () => {
   return (
-    <section className="mt-36 mb-20">
+    <section className="mt-36 mb-20" id="uslugi">
       <ContainerLayout>
         <div className="flex items-start lg:items-center">
           <div>

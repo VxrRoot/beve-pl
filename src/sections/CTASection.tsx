@@ -19,7 +19,7 @@ const CTASection = () => {
               <h2
                 className={`text-3xl lg:text-[2.5rem] lg:leading-[2.8rem] text-white tracking-[0.9px] ${mono.className}`}
               >
-                SKONTAKTUJ SIĘ <br /> Z NAMI #BEVENTOROUS
+                SKONTAKTUJ SIĘ Z NAMI <br /> NIE CZEKAJ #BEVE
               </h2>
               <p className="mb-6 mt-4 leading-[1.5rem] max-w-[460px] text-white tracking-[1.04px] font-[400]">
                 Potter ipsum wand elf parchment wingardium. Lion trace daily

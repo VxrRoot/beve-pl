@@ -9,7 +9,7 @@ const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
 const AboutUsSection = () => {
   return (
-    <section className="pt-20 pb-28">
+    <section className="pt-20 pb-28" id="o-nas">
       <ContainerLayout>
         <div className="flex items-center">
           <BeveDecorationIcon />

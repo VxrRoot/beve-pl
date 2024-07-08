@@ -60,7 +60,7 @@ const HeroSlider = ({ slides }: IProps) => {
                 <h4 className="mt-6">{subHeading}</h4>
                 <Link
                   className={`${mono.className} mt-8 hover:underline transition-all whitespace-nowrap w-fit  flex items-center justify-center  tracking-[1.06px] py-3  rounded-[6px]  text-white uppercase`}
-                  href={links.contact}
+                  href={links.purchase}
                 >
                   Sprawdź ofertę <ArrowUpRight className="ml-2 " />
                 </Link>
