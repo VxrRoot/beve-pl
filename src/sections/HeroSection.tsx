@@ -15,6 +15,12 @@ const sliderSlides = [
       "Lorem ipsum dolor sit amet consectetur. Semper quam velit id vel tincidunt id diam euismod. ",
     img: slideOneImage,
   },
+  {
+    heading: "WIELORAZOWE KUBKI NA WYDARZENIA BEZ ZBĘDNYCH FORMALNOŚCI",
+    subHeading:
+      "Lorem ipsum dolor sit amet consectetur. Semper quam velit id vel tincidunt id diam euismod. ",
+    img: slideOneImage,
+  },
 ];
 
 const HeroSection = () => {

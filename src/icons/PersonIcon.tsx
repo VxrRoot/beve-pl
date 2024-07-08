@@ -9,7 +9,7 @@ const PersonIcon = () => {
       viewBox="0 0 66 66"
       fill="none"
     >
-      <g clip-path="url(#clip0_135_2939)">
+      <g clipPath="url(#clip0_135_2939)">
         <path
           d="M26.5 43C32.8513 43 38 37.8513 38 31.5C38 25.1487 32.8513 20 26.5 20C20.1487 20 15 25.1487 15 31.5C15 37.8513 20.1487 43 26.5 43Z"
           fill="#F4F8E6"

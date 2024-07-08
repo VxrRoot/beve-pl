@@ -9,7 +9,7 @@ const DepositIcon = () => {
       viewBox="0 0 66 66"
       fill="none"
     >
-      <g clip-path="url(#clip0_135_2977)">
+      <g clipPath="url(#clip0_135_2977)">
         <path
           d="M26 69C38.7025 69 49 55.3447 49 38.5C49 21.6553 38.7025 8 26 8C13.2975 8 3 21.6553 3 38.5C3 55.3447 13.2975 69 26 69Z"
           fill="#F4F8E6"

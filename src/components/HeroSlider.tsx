@@ -3,7 +3,8 @@
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import Image from "next/image";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,6 +16,7 @@ import Link from "next/link";
 import { DM_Mono } from "next/font/google";
 import { ArrowUpRight } from "lucide-react";
 import ArrowIcon from "@/icons/ArrowIcon";
+import { useRef } from "react";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
@@ -23,7 +25,7 @@ interface IProps {
 }
 
 const HeroSlider = ({ slides }: IProps) => {
-  const swiper = useSwiper();
+  const swiperRef = useRef<SwiperType | null>();
 
   return (
     <div className="max-w-[1440px] mx-auto relative">
@@ -44,6 +46,7 @@ const HeroSlider = ({ slides }: IProps) => {
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Pagination, Navigation]}
+        onSwiper={(swiper: SwiperType) => (swiperRef.current = swiper)}
       >
         {slides.map(({ heading, img, subHeading }, idx) => (
           <SwiperSlide key={`${heading}-${idx}`}>
@@ -75,13 +78,13 @@ const HeroSlider = ({ slides }: IProps) => {
         ))}
       </Swiper>
       <div
-        onClick={() => swiper?.clickNext()}
+        onClick={() => swiperRef.current?.slidePrev()}
         className="prev absolute left-4 lg:left-[3rem] z-20 bottom-4 lg:bottom-1/2 lg:translate-y-1/2 cursor-pointer"
       >
         <ArrowIcon />
       </div>
       <div
-        onClick={() => swiper?.clickPrev()}
+        onClick={() => swiperRef.current?.slideNext()}
         className="next absolute right-4 lg:right-[3rem] z-20 bottom-4 lg:bottom-1/2 lg:translate-y-1/2 cursor-pointer rotate-180"
       >
         <ArrowIcon />
