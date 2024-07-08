@@ -3,7 +3,7 @@
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -14,6 +14,7 @@ import { links } from "@/constants";
 import Link from "next/link";
 import { DM_Mono } from "next/font/google";
 import { ArrowUpRight } from "lucide-react";
+import ArrowIcon from "@/icons/ArrowIcon";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
@@ -22,13 +23,22 @@ interface IProps {
 }
 
 const HeroSlider = ({ slides }: IProps) => {
+  const swiper = useSwiper();
+
   return (
-    <div className="max-w-[1440px] mx-auto">
+    <div className="max-w-[1440px] mx-auto relative">
       <Swiper
         spaceBetween={10}
         slidesPerView={1}
         loop={true}
         speed={2000}
+        navigation={{
+          prevEl: ".prev",
+          nextEl: ".next",
+        }}
+        pagination={{
+          clickable: true,
+        }}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
@@ -46,7 +56,7 @@ const HeroSlider = ({ slides }: IProps) => {
                 </h3>
                 <h4 className="mt-6">{subHeading}</h4>
                 <Link
-                  className={`${mono.className} mt-8 whitespace-nowrap w-fit  flex items-center justify-center  tracking-[1.06px] py-3  rounded-[6px]  text-white uppercase`}
+                  className={`${mono.className} mt-8 hover:underline transition-all whitespace-nowrap w-fit  flex items-center justify-center  tracking-[1.06px] py-3  rounded-[6px]  text-white uppercase`}
                   href={links.contact}
                 >
                   Sprawdź ofertę <ArrowUpRight className="ml-2 " />
@@ -64,6 +74,18 @@ const HeroSlider = ({ slides }: IProps) => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div
+        onClick={() => swiper?.clickNext()}
+        className="prev absolute left-4 lg:left-[3rem] z-20 bottom-4 lg:bottom-1/2 lg:translate-y-1/2 cursor-pointer"
+      >
+        <ArrowIcon />
+      </div>
+      <div
+        onClick={() => swiper?.clickPrev()}
+        className="next absolute right-4 lg:right-[3rem] z-20 bottom-4 lg:bottom-1/2 lg:translate-y-1/2 cursor-pointer rotate-180"
+      >
+        <ArrowIcon />
+      </div>
     </div>
   );
 };

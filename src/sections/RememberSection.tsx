@@ -42,7 +42,10 @@ const RememberSection = () => {
               >
                 !
               </div>
-              <span className="uppercase font-bold text-xl">1 lipca 2024</span>
+              <span className="uppercase font-bold text-xl">
+                {" "}
+                1 STYCZNIA 2025
+              </span>
             </div>
             <p className="pt-2">
               Wejście w życie zakazu używania kubków jednorazowych{" "}
