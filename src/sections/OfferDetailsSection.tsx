@@ -23,7 +23,7 @@ const adventages = [
 
 const OfferDetailsSection = () => {
   return (
-    <section className="my-20" id="o-kubkach">
+    <section className="py-20" id="o-kubkach">
       <ContainerLayout>
         <div className="flex items-start lg:items-center">
           <div>

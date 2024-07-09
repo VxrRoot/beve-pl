@@ -17,51 +17,51 @@ const TruckIcon = () => {
         <path
           d="M44.8125 22.875H53.7942C54.1305 22.8748 54.4592 22.9752 54.738 23.1631C55.0169 23.351 55.2333 23.6179 55.3594 23.9297L58.3125 31.3125"
           stroke="url(#paint0_linear_135_2950)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M11.0625 36.375H44.8125"
           stroke="url(#paint1_linear_135_2950)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M41.4375 46.5H27.9375"
           stroke="url(#paint2_linear_135_2950)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M44.8125 31.3125H58.3125V44.8125C58.3125 45.2601 58.1347 45.6893 57.8182 46.0057C57.5018 46.3222 57.0726 46.5 56.625 46.5H51.5625"
           stroke="url(#paint3_linear_135_2950)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M17.8125 46.5H12.75C12.3024 46.5 11.8732 46.3222 11.5568 46.0057C11.2403 45.6893 11.0625 45.2601 11.0625 44.8125V21.1875C11.0625 20.7399 11.2403 20.3107 11.5568 19.9943C11.8732 19.6778 12.3024 19.5 12.75 19.5H44.8125V41.7265"
           stroke="url(#paint4_linear_135_2950)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M46.5 51.5625C49.2959 51.5625 51.5625 49.2959 51.5625 46.5C51.5625 43.7041 49.2959 41.4375 46.5 41.4375C43.7041 41.4375 41.4375 43.7041 41.4375 46.5C41.4375 49.2959 43.7041 51.5625 46.5 51.5625Z"
           stroke="#98C220"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M22.875 51.5625C25.6709 51.5625 27.9375 49.2959 27.9375 46.5C27.9375 43.7041 25.6709 41.4375 22.875 41.4375C20.0791 41.4375 17.8125 43.7041 17.8125 46.5C17.8125 49.2959 20.0791 51.5625 22.875 51.5625Z"
           stroke="#0B8038"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -73,8 +73,8 @@ const TruckIcon = () => {
           y2="27.0934"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_135_2950"
@@ -84,8 +84,8 @@ const TruckIcon = () => {
           y2="36.875"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_135_2950"
@@ -95,8 +95,8 @@ const TruckIcon = () => {
           y2="47"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_135_2950"
@@ -106,8 +106,8 @@ const TruckIcon = () => {
           y2="38.9056"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_135_2950"
@@ -117,8 +117,8 @@ const TruckIcon = () => {
           y2="32.9989"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <clipPath id="clip0_135_2950">
           <rect width="66" height="66" fill="white" />

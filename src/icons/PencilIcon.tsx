@@ -17,30 +17,30 @@ const PencilIcon = () => {
         <path
           d="M44.848 21.6523L19.8047 46.6956"
           stroke="url(#paint0_linear_135_2990)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M37.543 14.3477L52.1516 28.9562"
           stroke="url(#paint1_linear_135_2990)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M26.9753 53.8679L12.6328 39.5254"
           stroke="url(#paint2_linear_135_2990)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M26.2451 54H14.5869C14.0335 54 13.5026 53.7801 13.1113 53.3887C12.7199 52.9974 12.5 52.4665 12.5 51.9131V40.2549C12.5003 39.7021 12.7198 39.172 13.1104 38.781L45.2806 6.61077C45.672 6.21969 46.2026 6 46.7558 6C47.3091 6 47.8397 6.21969 48.2311 6.61077L59.8892 18.2611C60.2803 18.6525 60.5 19.1831 60.5 19.7363C60.5 20.2896 60.2803 20.8202 59.8892 21.2115L27.719 53.3896C27.3279 53.7802 26.7979 53.9997 26.2451 54Z"
           stroke="url(#paint3_linear_135_2990)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -52,8 +52,8 @@ const PencilIcon = () => {
           y2="34.173"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_135_2990"
@@ -63,8 +63,8 @@ const PencilIcon = () => {
           y2="21.6513"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_135_2990"
@@ -74,8 +74,8 @@ const PencilIcon = () => {
           y2="46.696"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_135_2990"
@@ -85,8 +85,8 @@ const PencilIcon = () => {
           y2="29.998"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <clipPath id="clip0_135_2990">
           <rect width="66" height="66" fill="white" />

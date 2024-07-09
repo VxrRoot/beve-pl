@@ -17,30 +17,30 @@ const HandWIthCashIcon = () => {
         <path
           d="M49.0312 29.625C52.2932 29.625 54.9375 26.9807 54.9375 23.7188C54.9375 20.4568 52.2932 17.8125 49.0312 17.8125C45.7693 17.8125 43.125 20.4568 43.125 23.7188C43.125 26.9807 45.7693 29.625 49.0312 29.625Z"
           stroke="url(#paint0_linear_135_2915)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M16.125 49.875H9.375C8.92745 49.875 8.49822 49.6972 8.18176 49.3807C7.86529 49.0643 7.6875 48.6351 7.6875 48.1875V39.75C7.6875 39.3024 7.86529 38.8732 8.18176 38.5568C8.49822 38.2403 8.92745 38.0625 9.375 38.0625H16.125"
           stroke="#037C39"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M29.625 39.75H36.375L50.5078 36.4995C51.0274 36.3571 51.5728 36.3364 52.1017 36.4391C52.6306 36.5418 53.1287 36.7651 53.5572 37.0916C53.9858 37.4181 54.3332 37.8391 54.5726 38.3217C54.812 38.8044 54.9369 39.3357 54.9375 39.8745C54.9378 40.525 54.7567 41.1627 54.4147 41.716C54.0726 42.2693 53.5831 42.7163 53.0011 43.0069L44.8125 46.5L31.3125 49.875H16.125V38.0625L21.3984 32.7891C21.8698 32.3194 22.4291 31.9472 23.0444 31.6938C23.6597 31.4405 24.3189 31.3109 24.9844 31.3125H35.5312C36.6501 31.3125 37.7232 31.757 38.5144 32.5482C39.3055 33.3393 39.75 34.4124 39.75 35.5313C39.75 36.6501 39.3055 37.7232 38.5144 38.5144C37.7232 39.3055 36.6501 39.75 35.5312 39.75H29.625Z"
           stroke="url(#paint1_linear_135_2915)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M43.1248 23.9916C41.9785 24.5337 40.6881 24.6925 39.4446 24.4446C38.201 24.1966 37.0703 23.5549 36.2196 22.6146C35.3689 21.6742 34.8435 20.485 34.721 19.2229C34.5985 17.9608 34.8855 16.6927 35.5394 15.6063C36.1934 14.5199 37.1796 13.6728 38.3523 13.1903C39.525 12.7079 40.8218 12.6156 42.051 12.9272C43.2801 13.2388 44.3764 13.9377 45.1776 14.9206C45.9788 15.9035 46.4424 17.1181 46.4998 18.3848"
           stroke="#148437"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -52,8 +52,8 @@ const HandWIthCashIcon = () => {
           y2="23.7183"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_135_2915"
@@ -63,8 +63,8 @@ const HandWIthCashIcon = () => {
           y2="40.593"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <clipPath id="clip0_135_2915">
           <rect width="66" height="66" fill="white" />

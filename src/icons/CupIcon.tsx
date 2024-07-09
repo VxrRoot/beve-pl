@@ -17,16 +17,16 @@ const CupIcon = () => {
         <path
           d="M15 6H51L45.2125 55.215C45.1515 55.7085 44.9159 56.1623 44.5499 56.4911C44.1838 56.8198 43.7127 57.0008 43.225 57H22.775C22.2873 57.0008 21.8162 56.8198 21.4501 56.4911C21.0841 56.1623 20.8485 55.7085 20.7875 55.215L15 6Z"
           stroke="url(#paint0_linear_135_2905)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M16 16H50"
           stroke="url(#paint1_linear_135_2905)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -38,8 +38,8 @@ const CupIcon = () => {
           y2="31.4979"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_135_2905"
@@ -49,8 +49,8 @@ const CupIcon = () => {
           y2="16.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <clipPath id="clip0_135_2905">
           <rect width="66" height="66" fill="white" />

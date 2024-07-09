@@ -8,7 +8,7 @@ const ContactLayout = ({ children }: { children: React.ReactNode }) => {
     <main className="bg-gradient-to-r from-primaryGreen to-secondaryGreen pt-14 pb-16">
       <ContainerLayout>
         <ContactNav />
-        <div className={`bg-white p-10 mt-[-12px] rounded-[13px] mb-8`}>
+        <div className={`bg-white p-4 lg:p-10 mt-[-12px] rounded-[13px] mb-8`}>
           {children}
         </div>
         <ContactFooterSection />

@@ -9,8 +9,8 @@ const ArrowIcon = () => {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <circle cx="12" cy="12" r="12" fill="white" fill-opacity="0.39" />
-      <path d="M14 7L9 12L14 17" stroke="#F1F1F1" stroke-width="2" />
+      <circle cx="12" cy="12" r="12" fill="white" fillOpacity="0.39" />
+      <path d="M14 7L9 12L14 17" stroke="#F1F1F1" strokeWidth="2" />
     </svg>
   );
 };

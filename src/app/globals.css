@@ -106,3 +106,7 @@
     transform: translateX(-50%) !important;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}

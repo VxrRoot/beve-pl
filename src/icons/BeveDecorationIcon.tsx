@@ -44,8 +44,8 @@ const BeveDecorationIcon = () => {
           y2="-2.80523e-07"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_135_2614"
@@ -55,8 +55,8 @@ const BeveDecorationIcon = () => {
           y2="9"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_135_2614"
@@ -66,8 +66,8 @@ const BeveDecorationIcon = () => {
           y2="18"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
       </defs>
     </svg>

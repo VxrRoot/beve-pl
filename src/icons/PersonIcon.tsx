@@ -21,16 +21,16 @@ const PersonIcon = () => {
         <path
           d="M33.2144 39.0187C39.2931 39.0187 44.2208 34.0909 44.2208 28.0123C44.2208 21.9336 39.2931 17.0059 33.2144 17.0059C27.1357 17.0059 22.208 21.9336 22.208 28.0123C22.208 34.0909 27.1357 39.0187 33.2144 39.0187Z"
           stroke="url(#paint0_linear_135_2939)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M13.8926 54.4277C14.8856 50.0453 17.3389 46.1306 20.8498 43.3261C24.3608 40.5217 28.7208 38.9941 33.2143 38.9941C37.7078 38.9941 42.0679 40.5217 45.5788 43.3261C49.0898 46.1306 51.5431 50.0453 52.5361 54.4277"
           stroke="url(#paint1_linear_135_2939)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -42,8 +42,8 @@ const PersonIcon = () => {
           y2="28.0114"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_135_2939"
@@ -53,8 +53,8 @@ const PersonIcon = () => {
           y2="46.7103"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <clipPath id="clip0_135_2939">
           <rect width="66" height="66" fill="white" />

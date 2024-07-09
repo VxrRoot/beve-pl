@@ -1,7 +1,12 @@
+import WashingForm from "@/components/forms/WashingForm";
 import React from "react";
 
 const WashingPage = () => {
-  return <div>WashingPage</div>;
+  return (
+    <div>
+      <WashingForm />
+    </div>
+  );
 };
 
 export default WashingPage;

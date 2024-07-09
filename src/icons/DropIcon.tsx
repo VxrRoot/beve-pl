@@ -17,16 +17,16 @@ const DropIcon = () => {
         <path
           d="M52.2311 37.7692C52.2311 20.4615 33.0003 7 33.0003 7C33.0003 7 13.7695 20.4615 13.7695 37.7692C13.7695 42.8695 15.7956 47.761 19.4021 51.3674C23.0086 54.9739 27.9 57 33.0003 57C38.1006 57 42.992 54.9739 46.5985 51.3674C50.205 47.761 52.2311 42.8695 52.2311 37.7692Z"
           stroke="url(#paint0_linear_135_2929)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M34.9229 49.3068C39.7305 48.4967 43.7233 44.4991 44.5382 39.6914"
           stroke="url(#paint1_linear_135_2929)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
@@ -38,8 +38,8 @@ const DropIcon = () => {
           y2="31.9979"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_135_2929"
@@ -49,8 +49,8 @@ const DropIcon = () => {
           y2="44.4987"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <clipPath id="clip0_135_2929">
           <rect width="66" height="66" fill="white" />

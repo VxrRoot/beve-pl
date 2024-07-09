@@ -19,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href="/Favicon.ico" sizes="any" />
-      <body className={`${sans.className} bg-white text-black`}>
+      <body
+        suppressHydrationWarning={true}
+        className={`${sans.className} bg-white text-black`}
+      >
         <Header />
         {children}
         <Footer />

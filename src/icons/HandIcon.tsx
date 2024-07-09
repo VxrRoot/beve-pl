@@ -12,9 +12,9 @@ const HandIcon = () => {
       <path
         d="M7.51074 6.61572L21.1807 1.22318L26.0454 19.9929C26.093 20.1815 26.0687 20.3819 25.9769 20.5563C25.885 20.7307 25.7321 20.8671 25.5468 20.9399L17.7815 24.0032C17.5964 24.0765 17.3916 24.0812 17.2054 24.0165C17.0193 23.9517 16.8646 23.822 16.7707 23.6516L7.51074 6.61572Z"
         stroke="url(#paint0_linear_135_3078)"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M14.1826 9.71438C14.6899 9.49606 14.9241 8.90782 14.7058 8.40052C14.4875 7.89322 13.8992 7.65897 13.3919 7.8773L14.1826 9.71438ZM10.3953 11.3443L14.1826 9.71438L13.3919 7.8773L9.60468 9.50724L10.3953 11.3443Z"
@@ -24,16 +24,16 @@ const HandIcon = () => {
         d="M16.6002 26.2774H21.5068L31.7799 23.8705C32.1576 23.7651 32.5541 23.7498 32.9385 23.8258C33.323 23.9019 33.685 24.0672 33.9965 24.309C34.308 24.5507 34.5606 24.8624 34.7346 25.2198C34.9087 25.5772 34.9994 25.9706 34.9999 26.3695C35.0001 26.8512 34.8685 27.3234 34.6198 27.7331C34.3712 28.1428 34.0154 28.4738 33.5923 28.6889L27.64 31.2754L17.8269 33.7745H6.78711V25.0279L10.6204 21.1231C10.963 20.7753 11.3696 20.4997 11.8168 20.3121C12.2641 20.1245 12.7433 20.0286 13.227 20.0298H20.8935C21.7068 20.0298 22.4868 20.3589 23.0619 20.9447C23.637 21.5306 23.9601 22.3251 23.9601 23.1536C23.9601 23.9821 23.637 24.7766 23.0619 25.3624C22.4868 25.9483 21.7068 26.2774 20.8935 26.2774H16.6002Z"
         fill="white"
         stroke="url(#paint1_linear_135_3078)"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M6.78723 33.7746H2.15745C1.85047 33.7746 1.55607 33.6439 1.33901 33.4114C1.12194 33.1788 1 32.8634 1 32.5345V26.3339C1 26.005 1.12194 25.6895 1.33901 25.457C1.55607 25.2244 1.85047 25.0938 2.15745 25.0938H6.78723"
         stroke="#027C3A"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <defs>
         <linearGradient
@@ -44,8 +44,8 @@ const HandIcon = () => {
           y2="10.4985"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_135_3078"
@@ -55,8 +55,8 @@ const HandIcon = () => {
           y2="26.9016"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#017B39" />
-          <stop offset="1" stop-color="#97C11F" />
+          <stop stopColor="#017B39" />
+          <stop offset="1" stopColor="#97C11F" />
         </linearGradient>
       </defs>
     </svg>
