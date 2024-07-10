@@ -20,7 +20,6 @@ const InfoSection = () => {
           </span>{" "}
           żyć!
         </h2>
-        <p className="mb-6">Jedno zdanie opisujące</p>
         <CTAButton />
       </ContainerLayout>
     </section>

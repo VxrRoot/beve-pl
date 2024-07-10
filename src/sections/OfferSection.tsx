@@ -19,10 +19,6 @@ const OfferSection = () => {
             >
               WYPOŻYCZ LUB KUP WIELORAZOWE KUBKI BEVE
             </h2>
-            <p className="mt-4 font-light">
-              Lorem ipsum dolor sit amet consectetur. Semper quam velit id vel
-              tincidunt id diam euismod.
-            </p>
             <div className="w-full h-60 mt-4 bg-red-400">IMAGE</div>
           </div>
           <div className="flex-1 mt-10 lg:mt-0 lg:justify-end flex  md:pl-20 flex-col md:flex-row items-center">

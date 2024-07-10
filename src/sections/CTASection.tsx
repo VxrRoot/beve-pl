@@ -21,11 +21,9 @@ const CTASection = () => {
               >
                 SKONTAKTUJ SIĘ Z NAMI <br /> NIE CZEKAJ #BEVE
               </h2>
-              <p className="mb-6 mt-4 leading-[1.5rem] max-w-[460px] text-white tracking-[1.04px] font-[400]">
-                Potter ipsum wand elf parchment wingardium. Lion trace daily
-                soul remember inferi treacle with i’d.
-              </p>
-              <CTAButton />
+              <span className=" mt-6 leading-[1.5rem] max-w-[460px] text-white tracking-[1.04px] font-[400]">
+                <CTAButton />
+              </span>
             </div>
             <div className="border-primaryGray/20 border-t flex flex-col lg:flex-row gap-4 pt-4 mt-12 lg:mt-20">
               <a href="" className="flex text-white gap-2 items-center">

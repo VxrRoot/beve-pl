@@ -8,36 +8,40 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { DM_Mono } from "next/font/google";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
-import { Calendar } from "../ui/calendar";
 import { Input } from "../ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-like-checkbox-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 import { Textarea } from "../ui/textarea";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
+const cupProducerTypes = ["Nike", "Adidas", "NewBalance"];
+
 export const FormWashingSchema = z.object({
-  serviceType: z.enum(["mycie cykliczne", "mycie jednorazowe"], {
+  hasBoxes: z.enum(["tak", "nie"], {
     required_error: "To pole jest wymagane",
   }),
-  boxes: z.enum(["posiadam skrzynki", "nie posiadam skrzynek"], {
+  cupProducer: z.string({
     required_error: "To pole jest wymagane",
   }),
   cupAmount: z
     .string({ required_error: "To pole jest wymagane" })
     .min(1, { message: "To pole jest wymagane" }),
-  boxesAmount: z.string().optional(),
-  cupProducer: z.string().optional(),
-  sendDate: z.date({ required_error: "Data jest wymagana" }),
-  pickupDate: z.date({ required_error: "Data jest wymagana" }),
+  boxesAmount: z
+    .string({ required_error: "To pole jest wymagane" })
+    .min(1, { message: "To pole jest wymagane" }),
   nip: z
     .string({ required_error: "Numer NIP jest wymagany" })
     .min(9, { message: "Wpisz poprawny numer NIP" }),
@@ -79,15 +83,13 @@ export const FormWashingSchema = z.object({
 
 export type FormSchemaType = z.infer<typeof FormWashingSchema>;
 
-const WashingForm = () => {
+const SubleaseForm = () => {
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormWashingSchema),
     defaultValues: {
-      serviceType: "mycie cykliczne",
-      boxes: "posiadam skrzynki",
       cupAmount: "",
       boxesAmount: "",
-      cupProducer: "",
+      hasBoxes: "tak",
       flatNumber: "",
       nip: "",
       companyName: "",
@@ -100,8 +102,6 @@ const WashingForm = () => {
       email: "",
       phone: "",
       message: "",
-      // pickupDate: new Date(),
-      // sendDate: new Date(),
     },
   });
 
@@ -115,40 +115,84 @@ const WashingForm = () => {
         <div className="flex flex-col lg:flex-row">
           <div className="flex-1 lg:border-[#E5E5E5] lg:border-r lg:pr-10">
             <h1 className="text-2xl tracking-[-0.5px] mb-6">
-              1. Konfiguracja mycia kubków
+              1. Konfiguracja zakupu kubków
             </h1>
-            <div>
+            <FormField
+              control={form.control}
+              name="cupProducer"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[1rem] font-bold">
+                    Rodziaj kubka:
+                  </FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Wybierz z listy" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {cupProducerTypes.map((type, idx) => (
+                        <SelectItem key={`${type}-${idx}`} value={type}>
+                          {type}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="hasBoxes"
+              render={({ field }) => (
+                <FormItem className="space-y-3 mt-6">
+                  <FormLabel className="text-[1rem] font-bold">
+                    Projekt graficzny:
+                  </FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className="flex flex-col space-y-1"
+                    >
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="tak" />
+                        </FormControl>
+                        <FormLabel className="font-normal text-[1rem]">
+                          Tak
+                        </FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="nie" />
+                        </FormControl>
+                        <FormLabel className="font-normal text-[1rem]">
+                          Nie
+                        </FormLabel>
+                      </FormItem>
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="mt-6 flex flex-col gap-4 md:flex-row">
               <FormField
                 control={form.control}
-                name="serviceType"
+                name="cupAmount"
                 render={({ field }) => (
-                  <FormItem className="space-y-3">
+                  <FormItem className="flex-1">
                     <FormLabel className="text-[1rem] font-bold">
-                      Rodzaj usługi
+                      Ilość kubków:
                     </FormLabel>
                     <FormControl>
-                      <RadioGroup
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                        className="flex flex-col space-y-1"
-                      >
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="mycie cykliczne" />
-                          </FormControl>
-                          <FormLabel className="font-normal text-[1rem]">
-                            Mycie cykliczne
-                          </FormLabel>
-                        </FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="mycie jednorazowe" />
-                          </FormControl>
-                          <FormLabel className="font-normal text-[1rem]">
-                            Mycie jednorazowe
-                          </FormLabel>
-                        </FormItem>
-                      </RadioGroup>
+                      <Input placeholder="np. 5000" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -156,168 +200,19 @@ const WashingForm = () => {
               />
               <FormField
                 control={form.control}
-                name="boxes"
+                name="boxesAmount"
                 render={({ field }) => (
-                  <FormItem className="space-y-3 mt-6">
+                  <FormItem className="flex-1">
                     <FormLabel className="text-[1rem] font-bold">
-                      Skrzynki:{" "}
+                      Ilość skrzynek:
                     </FormLabel>
                     <FormControl>
-                      <RadioGroup
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                        className="flex flex-col space-y-1"
-                      >
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="posiadam skrzynki" />
-                          </FormControl>
-                          <FormLabel className="font-normal text-[1rem]">
-                            Posiadam skrzynki
-                          </FormLabel>
-                        </FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                          <FormControl>
-                            <RadioGroupItem value="nie posiadam skrzynek" />
-                          </FormControl>
-                          <FormLabel className="font-normal text-[1rem]">
-                            Nie posiadam skrzynek
-                          </FormLabel>
-                        </FormItem>
-                      </RadioGroup>
+                      <Input placeholder="np. 50" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <div className="mt-6 flex flex-col gap-4 md:flex-row">
-                <FormField
-                  control={form.control}
-                  name="cupAmount"
-                  render={({ field }) => (
-                    <FormItem className="flex-1">
-                      <FormLabel className="text-[1rem] font-bold">
-                        Ilość kubków:
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="np. 5000" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="boxesAmount"
-                  render={({ field }) => (
-                    <FormItem className="flex-1">
-                      <FormLabel className="text-[1rem] font-bold">
-                        Ilość skrzynek:
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="np. 50" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="mt-6 flex flex-col gap-4 md:flex-row">
-                <FormField
-                  control={form.control}
-                  name="sendDate"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col w-full">
-                      <FormLabel className="text-[1rem] font-bold">
-                        Data:
-                      </FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className={cn(
-                                "w-full pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "yyyy-MM-dd")
-                              ) : (
-                                <span>Data przesłania</span>
-                              )}
-                              <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="pickupDate"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col w-full md:mt-[2rem]">
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className={cn(
-                                " w-full pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "yyyy-MM-dd")
-                              ) : (
-                                <span>Data odbioru</span>
-                              )}
-                              <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="mt-6">
-                <FormField
-                  control={form.control}
-                  name="cupProducer"
-                  render={({ field }) => (
-                    <FormItem className="flex-1">
-                      <FormLabel className="text-[1rem] font-bold">
-                        Producent kubków (opcjonalnie)
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="Nazwa producenta" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
             </div>
           </div>
           <div className="flex-1 lg:pl-10 ">
@@ -557,4 +452,4 @@ const WashingForm = () => {
   );
 };
 
-export default WashingForm;
+export default SubleaseForm;
