@@ -41,9 +41,7 @@ const OfferDetailsSection = () => {
               <AdvantageItem key={`${item}-${idx}`} text={item} />
             ))}
           </div>
-          <div className="lg:w-[17.31rem] w-full bg-red-400 mt-10 lg:mt-0">
-            IMAGE
-          </div>
+          <div className="lg:w-[17.31rem] w-full bg-red-500 mt-10 lg:mt-0"></div>
         </div>
       </ContainerLayout>
     </section>

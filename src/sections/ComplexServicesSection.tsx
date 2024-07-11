@@ -69,7 +69,7 @@ const ComplexServices = () => {
             {complexServices.slice(0, 4).map((service, idx) => (
               <div
                 key={`${service.name}-${idx}`}
-                className="bg-[#F3F9F4] mt-5 p-6 lg:p-8 rounded-[0.5rem] flex items-start min-h-[140px] max-h-[162px]"
+                className="bg-[#F3F9F4] mt-5 p-6 lg:p-8 rounded-[0.5rem] flex items-start min-h-[140px] lg:max-h-[162px]"
               >
                 <div className="mr-8">{service.icon()}</div>
                 <div>
@@ -79,11 +79,12 @@ const ComplexServices = () => {
               </div>
             ))}
           </div>
-          <div className="flex-1 lg:pt-[10.25rem]">
+          <div className="flex-1 relative lg:pt-[10.25rem]">
+            <div className="absolute hidden lg:block left-0 top-5 h-40 bg-red-500 w-full"></div>
             {complexServices.slice(4).map((service, idx) => (
               <div
                 key={`${service.name}-${idx}`}
-                className="bg-[#F3F9F4] mt-5 p-6 lg:p-8 rounded-[0.5rem] flex items-start min-h-[140px] max-h-[162px]"
+                className="bg-[#F3F9F4] mt-5 p-6 lg:p-8 rounded-[0.5rem] flex items-start min-h-[140px] lg:max-h-[162px] "
               >
                 <div className="mr-8 h-full">{service.icon()}</div>
                 <div className="flex flex-col">

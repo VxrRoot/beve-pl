@@ -17,12 +17,13 @@ const CTASection = () => {
           <div>
             <div className="flex flex-col mt-16 lg:mt-0">
               <h2
-                className={`text-3xl lg:text-[2.5rem] lg:leading-[2.8rem] text-white tracking-[0.9px] ${mono.className}`}
+                className={`text-[2.625rem] leading-[2.7rem] lg:text-[2.5rem] lg:leading-[2.8rem] text-white tracking-[0.9px] ${mono.className}`}
               >
-                SKONTAKTUJ SIĘ Z NAMI <br /> NIE CZEKAJ #BEVE
+                SKONTAKTUJ <br className="lg:hidden" /> SIĘ Z NAMI <br /> NIE
+                CZEKAJ <br className="lg:hidden" /> #BEVE
               </h2>
               <span className=" mt-6 leading-[1.5rem] max-w-[460px] text-white tracking-[1.04px] font-[400]">
-                <CTAButton />
+                <CTAButton whiteHover={true} />
               </span>
             </div>
             <div className="border-primaryGray/20 border-t flex flex-col lg:flex-row gap-4 pt-4 mt-12 lg:mt-20">
@@ -44,7 +45,7 @@ const CTASection = () => {
               className="bg-cover bg-center -bottom-8 max-w-[20rem] lg:max-w-full absolute lg:bottom-0 "
             />
           </div>
-          <div className="absolute top-8 right-8 lg:top-16 lg:right-16">
+          <div className="absolute left-8 lg:left-auto top-8 lg:top-16 lg:right-16">
             <LogoWhite />
           </div>
         </div>

@@ -19,7 +19,7 @@ const OfferSection = () => {
             >
               WYPOŻYCZ LUB KUP WIELORAZOWE KUBKI BEVE
             </h2>
-            <div className="w-full h-60 mt-4 bg-red-400">IMAGE</div>
+            <div className="w-full h-60 mt-4 bg-red-500"></div>
           </div>
           <div className="flex-1 mt-10 lg:mt-0 lg:justify-end flex  md:pl-20 flex-col md:flex-row items-center">
             <div className="lg:p-10 p-6 w-full bg-white rounded-[0.75rem] flex-1 max-w-[366px] text-black">

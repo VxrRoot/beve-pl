@@ -13,7 +13,11 @@ interface IProps {
 const CTAButton = ({ whiteHover }: IProps) => {
   return (
     <Link
-      className={`${mono.className} hover:bg-primaryGreen transition-all whitespace-nowrap w-[252px] flex items-center justify-center shadow-button-cta-shadow tracking-[1.06px] py-3  rounded-[6px] bg-secondaryGreen text-white uppercase`}
+      className={`${mono.className} ${
+        whiteHover ? "hover:bg-white" : "hover:bg-primaryGreen"
+      } transition-all whitespace-nowrap w-[252px] flex items-center justify-center shadow-button-cta-shadow tracking-[1.06px] py-3 text-white rounded-[6px] bg-secondaryGreen ${
+        whiteHover ? "hover:text-primaryGreen" : "hover:text-white"
+      } uppercase`}
       href={links.purchase}
     >
       Wyceń zamówienie <ArrowUpRight className="ml-2 " />

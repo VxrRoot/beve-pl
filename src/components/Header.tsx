@@ -11,7 +11,7 @@ const Header = () => {
     <header>
       <div className="py-2 border-b border-primaryGray">
         <ContainerLayout>
-          <div className="flex text-sm lg:text-base gap-2 md:gap-4 justify-end flex-col md:flex-row">
+          <div className="flex text-sm lg:text-base gap-2 md:gap-4 items-center justify-end flex-col md:flex-row">
             <a href="" className="flex text-secondaryGray gap-2 items-center">
               <Phone className="w-4 h-4" /> + 48 123 456 789
             </a>

@@ -49,7 +49,7 @@ const NavLinks = ({
         variants={isMobile ? itemMotion : itemMotionDesktop}
         href={href}
         onClick={onClick}
-        className="text-center hover:text-primaryGreen transition-all uppercase text-black text-sm flex justify-center items-center whitespace-nowrap "
+        className="text-center hover:text-primaryGreen transition-colors uppercase text-black text-sm flex justify-center items-center whitespace-nowrap "
       >
         {name}
       </motion.a>
@@ -135,31 +135,31 @@ const ContactLink = ({ onClick }: { onClick: () => void }) => {
       <div
         className={`${
           visible ? "flex" : "hidden"
-        } z-50 flex-col bottom-[-168px] lg:rounded-[13px] lg:shadow-2xl lg:bottom-[-200px] lg:pb-4 lg:w-40 w-full min-h-40 pt-4 lg:pt-0 justify-between lg:hidden lg:group-hover:absolute lg:group-hover:flex lg:bg-white`}
+        } z-50 flex-col bottom-[-176px] items-start lg:pl-10 lg:rounded-[13px] lg:shadow-2xl lg:bottom-[-200px] lg:pb-4 lg:w-40 w-full min-h-40 pt-4 lg:pt-0 justify-between lg:hidden lg:group-hover:absolute lg:group-hover:flex lg:bg-white`}
       >
         <Link
-          className="mt-4 hover:text-primaryGreen transition-all"
+          className="mt-4 hover:text-primaryGreen transition-colors"
           href={links.purchase}
           onClick={onClick}
         >
           Zakup
         </Link>
         <Link
-          className="mt-8 hover:text-primaryGreen transition-all"
+          className="mt-8 hover:text-primaryGreen transition-colors"
           href={links.rent}
           onClick={onClick}
         >
           Wynajem
         </Link>
         <Link
-          className="mt-8 hover:text-primaryGreen transition-all"
+          className="mt-8 hover:text-primaryGreen transition-colors"
           href={links.washing}
           onClick={onClick}
         >
           Mycie
         </Link>
         <Link
-          className="mt-8 hover:text-primaryGreen transition-all"
+          className="mt-8 hover:text-primaryGreen transition-colors"
           href={links.sublease}
           onClick={onClick}
         >

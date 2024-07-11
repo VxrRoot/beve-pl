@@ -67,14 +67,14 @@ const AboutUsSection = () => {
               </p>
             </div>
           </div>
-          <div className="flex-1 flex justify-center mt-12 lg:mt-0 items-center">
-            <Image
+          <div className="flex-1 flex justify-center mt-12 lg:mt-0 items-center bg-red-500">
+            {/* <Image
               alt=""
               src={aboutImg}
               width={1000}
               height={1000}
               className="w-full max-w-[346px]"
-            />
+            /> */}
           </div>
         </div>
       </ContainerLayout>

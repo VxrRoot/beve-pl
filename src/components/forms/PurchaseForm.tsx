@@ -8,9 +8,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { links } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight } from "lucide-react";
 import { DM_Mono } from "next/font/google";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
@@ -569,7 +571,12 @@ const PurchaseForm = () => {
                     />
                   </FormControl>
                   <div className="space-y-1 text-[14px]">
-                    <FormLabel>Zgadzam się na politykę prywatności</FormLabel>
+                    <FormLabel>
+                      Zgadzam się na{" "}
+                      <Link href={links.privacyPolicy} className="underline">
+                        Politykę Prywatności
+                      </Link>
+                    </FormLabel>
                   </div>
                 </FormItem>
               )}
