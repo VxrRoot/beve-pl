@@ -12,9 +12,10 @@ import { links } from "@/constants";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { ArrowUpRight, ChevronDown, Info } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Info, Loader, Send } from "lucide-react";
 import { DM_Mono } from "next/font/google";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
@@ -30,7 +31,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
-import { cupAmountValues } from "./PurchaseForm";
+import { cupAmountValues, LoadingStatus } from "./PurchaseForm";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
@@ -118,6 +119,8 @@ export const FormWashingSchema = z
 export type FormSchemaType = z.infer<typeof FormWashingSchema>;
 
 const RentForm = () => {
+  const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.NOT_LOADING);
+
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormWashingSchema),
     defaultValues: {
@@ -146,7 +149,92 @@ const RentForm = () => {
   const differentShipment = form.watch("differentShipmentData");
 
   function onSubmit(values: z.infer<typeof FormWashingSchema>) {
-    console.log(values);
+    setLoadingStatus(LoadingStatus.PENDING);
+
+    let message = {};
+
+    const pickupDate = new Date(values.pickupDate);
+
+    const returnDate = new Date(values.returnDate);
+
+    if (values.differentShipmentData) {
+      message = {
+        contactType: "Wynajem",
+        // Order customer
+        name: values.nameAndSurname,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+        consent: values.termsConsent,
+        // Order details
+        cupType: values.cupType,
+        design: values.design,
+        cupAmount: values.cupAmount,
+        pickupDate: `${pickupDate.getDate()} ${pickupDate.getMonth()} ${pickupDate.getFullYear()}`,
+        returnDate: `${returnDate.getDate()} ${returnDate.getMonth()} ${returnDate.getFullYear()}`,
+        // Compeny detaila
+        nip: values.nip,
+        companyName: values.companyName,
+        country: values.country,
+        postCode: values.postCode,
+        city: values.city,
+        street: values.street,
+        buildingNumber: values.buildingNumber,
+        flatNumber: values.flatNumber ? values.flatNumber : "Brak",
+        // Shipment data
+        shipmentData: "Takie same jak na fakturze",
+      };
+    } else {
+      message = {
+        contactType: "Wynajem",
+        // Order customer
+        name: values.nameAndSurname,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+        consent: values.termsConsent,
+        // Order details
+        cupType: values.cupType,
+        design: values.design,
+        cupAmount: values.cupAmount,
+        pickupDate: `${pickupDate.getDate()} ${pickupDate.getMonth()} ${pickupDate.getFullYear()}`,
+        returnDate: `${returnDate.getDate()} ${returnDate.getMonth()} ${returnDate.getFullYear()}`,
+        // Compeny detaila
+        nip: values.nip,
+        companyName: values.companyName,
+        country: values.country,
+        postCode: values.postCode,
+        city: values.city,
+        street: values.street,
+        buildingNumber: values.buildingNumber,
+        flatNumber: values.flatNumber ? values.flatNumber : "Brak",
+        // Shipment data
+        shipmentCountry: values.shipmentCountry,
+        shipmentPostCode: values.shipmentPostCode,
+        shipmentCity: values.shipmentCity,
+        shipmentStreet: values.shipmentStreet,
+        shipmentBuildingNumber: values.shipmentBuildingNumber,
+        shipmentFlatNumber: values.shipmentFlatNumber
+          ? values.shipmentFlatNumber
+          : "Brak",
+      };
+    }
+
+    try {
+      const response = fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+
+      console.log(response);
+
+      setLoadingStatus(LoadingStatus.SEND);
+    } catch (err) {
+      setLoadingStatus(LoadingStatus.NOT_LOADING);
+    }
   }
 
   return (
@@ -668,7 +756,21 @@ const RentForm = () => {
               className={`uppercase w-full my-3 text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
               type="submit"
             >
-              WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
+              {loadingStatus === LoadingStatus.NOT_LOADING && (
+                <span className="flex">
+                  WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
+                </span>
+              )}
+              {loadingStatus === LoadingStatus.PENDING && (
+                <span>
+                  <Loader className="animate-spin" />
+                </span>
+              )}
+              {loadingStatus === LoadingStatus.SEND && (
+                <span className="flex">
+                  WYSŁANO <Send className="ml-2 " />
+                </span>
+              )}
             </Button>
             <p className="text-center text-xs">
               Na Twoją wiadomosć odpowiemy w ciągu 48h!
