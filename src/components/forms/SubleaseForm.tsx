@@ -161,7 +161,7 @@ const SubleaseForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[1rem] font-bold">
-                    Rodzaj kubka:
+                    Producent kubka:
                   </FormLabel>
                   <Select
                     onValueChange={field.onChange}
