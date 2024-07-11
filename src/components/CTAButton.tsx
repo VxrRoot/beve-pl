@@ -6,7 +6,11 @@ import React from "react";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
-const CTAButton = () => {
+interface IProps {
+  whiteHover?: boolean;
+}
+
+const CTAButton = ({ whiteHover }: IProps) => {
   return (
     <Link
       className={`${mono.className} hover:bg-primaryGreen transition-all whitespace-nowrap w-[252px] flex items-center justify-center shadow-button-cta-shadow tracking-[1.06px] py-3  rounded-[6px] bg-secondaryGreen text-white uppercase`}

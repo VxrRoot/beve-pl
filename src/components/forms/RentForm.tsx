@@ -161,7 +161,7 @@ const RentForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[1rem] font-bold">
-                    Rodziaj kubka:
+                    Rodzaj kubka:
                   </FormLabel>
                   <Select
                     onValueChange={field.onChange}

@@ -1,6 +1,8 @@
 "use client";
 import { links } from "@/constants";
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import CTAButton from "./CTAButton";
 
@@ -34,9 +36,11 @@ const navLinks = [
 const NavLinks = ({
   isMobile,
   className,
+  onClick,
 }: {
   isMobile: boolean;
   className: string;
+  onClick: () => void;
 }) => (
   <div className={className}>
     {navLinks.map(({ name, href, id }) => (
@@ -44,13 +48,16 @@ const NavLinks = ({
         key={id}
         variants={isMobile ? itemMotion : itemMotionDesktop}
         href={href}
-        className="text-center uppercase text-black text-sm flex justify-center items-center whitespace-nowrap "
+        onClick={onClick}
+        className="text-center hover:text-primaryGreen transition-all uppercase text-black text-sm flex justify-center items-center whitespace-nowrap "
       >
         {name}
       </motion.a>
     ))}
-    <ContactLink />
-    <CTAButton />
+    <ContactLink onClick={onClick} />
+    <div onClick={onClick}>
+      <CTAButton />
+    </div>
   </div>
 );
 
@@ -59,7 +66,11 @@ export default function Nav() {
   return (
     <nav className="relative flex items-center justify-between  font-medium  max-w-[1440px] mx-auto">
       <div className="hidden lg:flex lg:items-center  lg:justify-center lg:gap-6 lg:text-md  lg:ml-auto ">
-        <NavLinks className="flex gap-10" isMobile={false} />
+        <NavLinks
+          onClick={() => setToggled(false)}
+          className="flex gap-10"
+          isMobile={false}
+        />
       </div>
 
       {toggled && (
@@ -71,7 +82,8 @@ export default function Nav() {
           w-full flex-col items-center  justify-center  gap-24 bg-white text-2xl font-bold"
         >
           <NavLinks
-            className="flex flex-col gap-24 text-lg w-full items-center"
+            onClick={() => setToggled(false)}
+            className="flex flex-col gap-16 text-lg w-full items-center"
             isMobile={true}
           />
         </motion.div>
@@ -83,7 +95,9 @@ export default function Nav() {
         initial={{ opacity: 0, x: -25 }}
         transition={{ delay: 0.35 }}
         onClick={() => setToggled((prevToggle) => !prevToggle)}
-        className={`burger z-50 cursor-pointer space-y-1.5 lg:hidden 
+        className={`burger ${
+          toggled && "fixed right-4 top-8"
+        } z-50 cursor-pointer space-y-1.5 lg:hidden 
         `}
       >
         <motion.span
@@ -107,13 +121,51 @@ export default function Nav() {
   );
 }
 
-const ContactLink = () => {
+const ContactLink = ({ onClick }: { onClick: () => void }) => {
+  const [visible, setVisible] = useState(false);
+
   return (
-    <motion.a
+    <motion.div
       variants={itemMotion}
-      className="text-center uppercase text-black text-sm flex justify-center items-center whitespace-nowrap "
+      className="text-center cursor-pointer relative uppercase text-black text-sm flex flex-col justify-center items-center whitespace-nowrap group"
     >
-      Kontakt
-    </motion.a>
+      <span className="flex items-center" onClick={() => setVisible(!visible)}>
+        Kontakt <ChevronDown className="w-4 text-primaryGreen ml-2" />
+      </span>
+      <div
+        className={`${
+          visible ? "flex" : "hidden"
+        } z-50 flex-col bottom-[-168px] lg:rounded-[13px] lg:shadow-2xl lg:bottom-[-200px] lg:pb-4 lg:w-40 w-full min-h-40 pt-4 lg:pt-0 justify-between lg:hidden lg:group-hover:absolute lg:group-hover:flex lg:bg-white`}
+      >
+        <Link
+          className="mt-4 hover:text-primaryGreen transition-all"
+          href={links.purchase}
+          onClick={onClick}
+        >
+          Zakup
+        </Link>
+        <Link
+          className="mt-8 hover:text-primaryGreen transition-all"
+          href={links.rent}
+          onClick={onClick}
+        >
+          Wynajem
+        </Link>
+        <Link
+          className="mt-8 hover:text-primaryGreen transition-all"
+          href={links.washing}
+          onClick={onClick}
+        >
+          Mycie
+        </Link>
+        <Link
+          className="mt-8 hover:text-primaryGreen transition-all"
+          href={links.sublease}
+          onClick={onClick}
+        >
+          Podnajem
+        </Link>
+      </div>
+    </motion.div>
   );
 };
