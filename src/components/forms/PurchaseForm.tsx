@@ -12,7 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight } from "lucide-react";
 import { DM_Mono } from "next/font/google";
 import { useForm } from "react-hook-form";
-import { RefinementCtx, z } from "zod";
+import { z } from "zod";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-like-checkbox-group";
@@ -37,6 +37,15 @@ export const cupAmountValues = [
   "5200",
   "10000",
   "+20000",
+];
+
+const optionalShipmentFields = [
+  "shipmentCountry",
+  "shipmentPostCode",
+  "shipmentCity",
+  "shipmentStreet",
+  "shipmentBuildingNumber",
+  "shipmentFlatNumber",
 ];
 
 export const FormWashingSchema = z
@@ -86,20 +95,22 @@ export const FormWashingSchema = z
         message: "Musisz zaakceptować politykę prywatności",
       }),
     //     Optional
-    countryShipment: z.string().optional(),
-    postCodeShipment: z.string().optional(),
-    cityShipment: z.string().optional(),
-    streetShipment: z.string().optional(),
-    buildingNumberShipment: z.string().optional(),
-    flatNumberShipment: z.string().optional(),
+    shipmentCountry: z.string().optional(),
+    shipmentPostCode: z.string().optional(),
+    shipmentCity: z.string().optional(),
+    shipmentStreet: z.string().optional(),
+    shipmentBuildingNumber: z.string().optional(),
+    shipmentFlatNumber: z.string().optional(),
   })
   .superRefine((data, ctx) => {
     if (data.differentShipmentData === true) {
-      if (!data.countryShipment) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "Pole jest wymagane",
-          path: ["countryShipment"],
+      if (!data.shipmentCountry) {
+        optionalShipmentFields.map((item) => {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Pole jest wymagane",
+            path: [item],
+          });
         });
       }
     }
@@ -124,6 +135,12 @@ const PurchaseForm = () => {
       email: "",
       phone: "",
       message: "",
+      shipmentCountry: "",
+      shipmentPostCode: "",
+      shipmentCity: "",
+      shipmentStreet: "",
+      shipmentBuildingNumber: "",
+      shipmentFlatNumber: "",
     },
   });
 
@@ -384,7 +401,7 @@ const PurchaseForm = () => {
                 <div className="mt-3 flex flex-col gap-4 md:flex-row">
                   <FormField
                     control={form.control}
-                    name="countryShipment"
+                    name="shipmentCountry"
                     render={({ field }) => (
                       <FormItem className="flex-1">
                         <FormLabel className="text-[.75rem]">Kraj</FormLabel>
@@ -397,7 +414,7 @@ const PurchaseForm = () => {
                   />
                   <FormField
                     control={form.control}
-                    name="postCodeShipment"
+                    name="shipmentPostCode"
                     render={({ field }) => (
                       <FormItem className="flex-1">
                         <FormLabel className="text-[.75rem]">
@@ -414,7 +431,7 @@ const PurchaseForm = () => {
                 <div className="mt-3 flex flex-col gap-4 md:flex-row">
                   <FormField
                     control={form.control}
-                    name="cityShipment"
+                    name="shipmentCity"
                     render={({ field }) => (
                       <FormItem className="flex-1">
                         <FormLabel className="text-[.75rem]">
@@ -429,7 +446,7 @@ const PurchaseForm = () => {
                   />
                   <FormField
                     control={form.control}
-                    name="streetShipment"
+                    name="shipmentStreet"
                     render={({ field }) => (
                       <FormItem className="flex-1">
                         <FormLabel className="text-[.75rem]">Ulica</FormLabel>
@@ -444,7 +461,7 @@ const PurchaseForm = () => {
                 <div className="mt-3 flex flex-col gap-4 md:flex-row">
                   <FormField
                     control={form.control}
-                    name="buildingNumberShipment"
+                    name="shipmentBuildingNumber"
                     render={({ field }) => (
                       <FormItem className="flex-1">
                         <FormLabel className="text-[.75rem]">
@@ -459,7 +476,7 @@ const PurchaseForm = () => {
                   />
                   <FormField
                     control={form.control}
-                    name="flatNumberShipment"
+                    name="shipmentFlatNumber"
                     render={({ field }) => (
                       <FormItem className="flex-1">
                         <FormLabel className="text-[.75rem]">

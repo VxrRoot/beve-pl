@@ -24,58 +24,88 @@ import { Textarea } from "../ui/textarea";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
-export const FormWashingSchema = z.object({
-  serviceType: z.enum(["mycie cykliczne", "mycie jednorazowe"], {
-    required_error: "To pole jest wymagane",
-  }),
-  boxes: z.enum(["posiadam skrzynki", "nie posiadam skrzynek"], {
-    required_error: "To pole jest wymagane",
-  }),
-  cupAmount: z
-    .string({ required_error: "To pole jest wymagane" })
-    .min(1, { message: "To pole jest wymagane" }),
-  boxesAmount: z.string().optional(),
-  cupProducer: z.string().optional(),
-  sendDate: z.date({ required_error: "Data jest wymagana" }),
-  pickupDate: z.date({ required_error: "Data jest wymagana" }),
-  nip: z
-    .string({ required_error: "Numer NIP jest wymagany" })
-    .min(9, { message: "Wpisz poprawny numer NIP" }),
-  companyName: z
-    .string({ required_error: "Nazwa firmy jest wymagana" })
-    .min(2, "Wpisz poprawną nazwę firmy"),
-  country: z
-    .string({ required_error: "Miasto jest wymagane" })
-    .min(2, { message: "Wpisz poprawną nazwę kraju" }),
-  postCode: z
-    .string({ required_error: "Kod pocztowy jest wymagany" })
-    .min(2, { message: "Wpisz poprawny kod pocztowy" }),
-  city: z
-    .string({ required_error: "Miasto jest wymagane" })
-    .min(2, { message: "Wpisz poprawną nazwę" }),
-  street: z
-    .string({ required_error: "Ulica jest wymagana" })
-    .min(2, { message: "Wpisz poprawną nazwę" }),
-  buildingNumber: z
-    .string({ required_error: "Numer budynku jest wymagany" })
-    .min(2, { message: "Wpisz poprawną nazwę" }),
-  flatNumber: z.string().optional(),
-  invoiceDataAreShipment: z.boolean().default(false).optional(),
-  nameAndSurname: z.string().min(2, "Wpisz imię i nazwisko"),
-  email: z
-    .string({ required_error: "Wpisz adres email" })
-    .email({ message: "Wpisz poprawny adres email" }),
-  phone: z
-    .string({ required_error: "Wpisz numer telefonu" })
-    .min(9, { message: "Wpisz poprawny numer telefonu" }),
-  message: z.string().optional(),
-  termsConsent: z
-    .boolean({ required_error: "Zgoda jest wymagana" })
-    .default(false)
-    .refine((val) => val === true, {
-      message: "Musisz zaakceptować politykę prywatności",
+const optionalShipmentFields = [
+  "shipmentCountry",
+  "shipmentPostCode",
+  "shipmentCity",
+  "shipmentStreet",
+  "shipmentBuildingNumber",
+  "shipmentFlatNumber",
+];
+
+export const FormWashingSchema = z
+  .object({
+    serviceType: z.enum(["mycie cykliczne", "mycie jednorazowe"], {
+      required_error: "To pole jest wymagane",
     }),
-});
+    boxes: z.enum(["posiadam skrzynki", "nie posiadam skrzynek"], {
+      required_error: "To pole jest wymagane",
+    }),
+    cupAmount: z
+      .string({ required_error: "To pole jest wymagane" })
+      .min(1, { message: "To pole jest wymagane" }),
+    boxesAmount: z.string().optional(),
+    cupProducer: z.string().optional(),
+    sendDate: z.date({ required_error: "Data jest wymagana" }),
+    pickupDate: z.date({ required_error: "Data jest wymagana" }),
+    nip: z
+      .string({ required_error: "Numer NIP jest wymagany" })
+      .min(9, { message: "Wpisz poprawny numer NIP" }),
+    companyName: z
+      .string({ required_error: "Nazwa firmy jest wymagana" })
+      .min(2, "Wpisz poprawną nazwę firmy"),
+    country: z
+      .string({ required_error: "Miasto jest wymagane" })
+      .min(2, { message: "Wpisz poprawną nazwę kraju" }),
+    postCode: z
+      .string({ required_error: "Kod pocztowy jest wymagany" })
+      .min(2, { message: "Wpisz poprawny kod pocztowy" }),
+    city: z
+      .string({ required_error: "Miasto jest wymagane" })
+      .min(2, { message: "Wpisz poprawną nazwę" }),
+    street: z
+      .string({ required_error: "Ulica jest wymagana" })
+      .min(2, { message: "Wpisz poprawną nazwę" }),
+    buildingNumber: z
+      .string({ required_error: "Numer budynku jest wymagany" })
+      .min(2, { message: "Wpisz poprawną nazwę" }),
+    flatNumber: z.string().optional(),
+    differentShipmentData: z.boolean().default(false).optional(),
+    nameAndSurname: z.string().min(2, "Wpisz imię i nazwisko"),
+    email: z
+      .string({ required_error: "Wpisz adres email" })
+      .email({ message: "Wpisz poprawny adres email" }),
+    phone: z
+      .string({ required_error: "Wpisz numer telefonu" })
+      .min(9, { message: "Wpisz poprawny numer telefonu" }),
+    message: z.string().optional(),
+    termsConsent: z
+      .boolean({ required_error: "Zgoda jest wymagana" })
+      .default(false)
+      .refine((val) => val === true, {
+        message: "Musisz zaakceptować politykę prywatności",
+      }),
+    //     Optional
+    shipmentCountry: z.string().optional(),
+    shipmentPostCode: z.string().optional(),
+    shipmentCity: z.string().optional(),
+    shipmentStreet: z.string().optional(),
+    shipmentBuildingNumber: z.string().optional(),
+    shipmentFlatNumber: z.string().optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.differentShipmentData === true) {
+      if (!data.shipmentCountry) {
+        optionalShipmentFields.map((item) => {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Pole jest wymagane",
+            path: [item],
+          });
+        });
+      }
+    }
+  });
 
 export type FormSchemaType = z.infer<typeof FormWashingSchema>;
 
@@ -102,8 +132,16 @@ const WashingForm = () => {
       message: "",
       // pickupDate: new Date(),
       // sendDate: new Date(),
+      shipmentCountry: "",
+      shipmentPostCode: "",
+      shipmentCity: "",
+      shipmentStreet: "",
+      shipmentBuildingNumber: "",
+      shipmentFlatNumber: "",
     },
   });
+
+  const differentShipment = form.watch("differentShipmentData");
 
   function onSubmit(values: z.infer<typeof FormWashingSchema>) {
     console.log(values);
@@ -442,7 +480,7 @@ const WashingForm = () => {
             </div>
             <FormField
               control={form.control}
-              name="invoiceDataAreShipment"
+              name="differentShipmentData"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center my-6 space-x-3 space-y-0">
                   <FormControl>
@@ -459,6 +497,105 @@ const WashingForm = () => {
                 </FormItem>
               )}
             />
+            {differentShipment && (
+              <div className="mb-6">
+                <h2 className="text-2xl tracking-[-0.5px] mb-6 mt-10 lg:mt-0">
+                  Dane do wysyłki
+                </h2>
+                <div className="mt-3 flex flex-col gap-4 md:flex-row">
+                  <FormField
+                    control={form.control}
+                    name="shipmentCountry"
+                    render={({ field }) => (
+                      <FormItem className="flex-1">
+                        <FormLabel className="text-[.75rem]">Kraj</FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="shipmentPostCode"
+                    render={({ field }) => (
+                      <FormItem className="flex-1">
+                        <FormLabel className="text-[.75rem]">
+                          Kod pocztowy
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="mt-3 flex flex-col gap-4 md:flex-row">
+                  <FormField
+                    control={form.control}
+                    name="shipmentCity"
+                    render={({ field }) => (
+                      <FormItem className="flex-1">
+                        <FormLabel className="text-[.75rem]">
+                          Miejscowość
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="shipmentStreet"
+                    render={({ field }) => (
+                      <FormItem className="flex-1">
+                        <FormLabel className="text-[.75rem]">Ulica</FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="mt-3 flex flex-col gap-4 md:flex-row">
+                  <FormField
+                    control={form.control}
+                    name="shipmentBuildingNumber"
+                    render={({ field }) => (
+                      <FormItem className="flex-1">
+                        <FormLabel className="text-[.75rem]">
+                          Nr budynku
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="shipmentFlatNumber"
+                    render={({ field }) => (
+                      <FormItem className="flex-1">
+                        <FormLabel className="text-[.75rem]">
+                          Nr mieszkania
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+            )}
             <h2 className="text-2xl tracking-[-0.5px] mb-6 mt-10 lg:mt-0">
               3. Dane kontaktowe
             </h2>

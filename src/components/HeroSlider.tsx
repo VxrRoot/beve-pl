@@ -68,6 +68,7 @@ const HeroSlider = ({ slides }: IProps) => {
               <div className="w-full order-1 lg:order-2 ">
                 <Image
                   width={801}
+                  priority
                   src={img}
                   alt=""
                   className="h-full max-w-[801px] ml-auto bg-center w-full  bg-cover"
