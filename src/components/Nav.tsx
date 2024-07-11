@@ -83,7 +83,7 @@ export default function Nav() {
         >
           <NavLinks
             onClick={() => setToggled(false)}
-            className="flex flex-col gap-16 text-lg w-full items-center"
+            className="flex flex-col gap-12 text-lg w-full items-center"
             isMobile={true}
           />
         </motion.div>

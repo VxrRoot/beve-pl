@@ -5,7 +5,7 @@ import React from "react";
 const ContactFooterSection = () => {
   return (
     <section className="flex flex-col lg:flex-row">
-      <div className="bg-white rounded-[13px]  flex-1 flex p-10">
+      <div className="bg-white rounded-[13px]  flex-1 flex flex-col md:flex-row p-10">
         <div className="flex-1">
           <Logo width={178} height={47} />
           <div className="text-black">
@@ -18,7 +18,7 @@ const ContactFooterSection = () => {
             </a>
           </div>
         </div>
-        <div className="flex-1 bg-red-500"></div>
+        <div className="flex-1 bg-red-500 min-h-10"></div>
       </div>
       <div className="flex-1 lg:pl-16 pt-16 lg:pt-0 items-center grid grid-rows-4 gap-8 lg:grid-rows-2 lg:grid-cols-2">
         <div className="flex flex-col text-white">

@@ -50,6 +50,7 @@ export const FormWashingSchema = z
     }),
     cupAmount: z
       .string({ required_error: "To pole jest wymagane" })
+      .regex(/^\d*$/, "To pole musi być numerem")
       .min(1, { message: "To pole jest wymagane" }),
     boxesAmount: z
       .string({ required_error: "To pole jest wymagane" })
@@ -232,7 +233,7 @@ const SubleaseForm = () => {
                       Ilość kubków:
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="np. 5000" {...field} />
+                      <Input placeholder="np. 5000" {...field} type="number" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -247,7 +248,7 @@ const SubleaseForm = () => {
                       Ilość skrzynek:
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="np. 50" {...field} />
+                      <Input placeholder="np. 50" {...field} type="number" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
