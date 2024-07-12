@@ -10,9 +10,10 @@ import {
 } from "@/components/ui/form";
 import { links } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Loader, Send } from "lucide-react";
 import { DM_Mono } from "next/font/google";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
@@ -28,6 +29,12 @@ import {
 import { Textarea } from "../ui/textarea";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
+
+export enum LoadingStatus {
+  NOT_LOADING = "not loading",
+  PENDING = "pending",
+  SEND = "send",
+}
 
 const cupProducerTypes = ["Nike", "Adidas", "NewBalance"];
 
@@ -117,6 +124,8 @@ export const FormWashingSchema = z
 export type FormSchemaType = z.infer<typeof FormWashingSchema>;
 
 const SubleaseForm = () => {
+  const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.NOT_LOADING);
+
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormWashingSchema),
     defaultValues: {
@@ -146,8 +155,95 @@ const SubleaseForm = () => {
 
   const differentShipment = form.watch("differentShipmentData");
 
-  function onSubmit(values: z.infer<typeof FormWashingSchema>) {
+  async function onSubmit(values: z.infer<typeof FormWashingSchema>) {
     console.log(values);
+
+    setLoadingStatus(LoadingStatus.PENDING);
+
+    let message = {};
+
+    if (!values.differentShipmentData) {
+      message = {
+        contactType: "Podnajem",
+        // Order customer
+        name: values.nameAndSurname,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+        consent: values.termsConsent,
+        // Order details
+
+        boxes: values.hasBoxes,
+        cupAmount: values.cupAmount,
+        boxesAmount: values.boxesAmount,
+        cupProducer: values.cupProducer,
+
+        // Company detaila
+        nip: values.nip,
+        companyName: values.companyName,
+        country: values.country,
+        postCode: values.postCode,
+        city: values.city,
+        street: values.street,
+        buildingNumber: values.buildingNumber,
+        flatNumber: values.flatNumber ? values.flatNumber : "Brak",
+        // Shipment data
+        shipmentData: "Takie same jak na fakturze",
+      };
+    } else {
+      message = {
+        contactType: "Podnajem",
+        // Order customer
+        name: values.nameAndSurname,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+        consent: values.termsConsent,
+        // Order details
+
+        boxes: values.hasBoxes,
+        cupAmount: values.cupAmount,
+        boxesAmount: values.boxesAmount,
+        cupProducer: values.cupProducer,
+
+        // Compeny detaila
+        nip: values.nip,
+        companyName: values.companyName,
+        country: values.country,
+        postCode: values.postCode,
+        city: values.city,
+        street: values.street,
+        buildingNumber: values.buildingNumber,
+        flatNumber: values.flatNumber ? values.flatNumber : "Brak",
+        // Shipment data
+        shipmentData: "Inne dane wysyłki",
+        shipmentCountry: values.shipmentCountry,
+        shipmentPostCode: values.shipmentPostCode,
+        shipmentCity: values.shipmentCity,
+        shipmentStreet: values.shipmentStreet,
+        shipmentBuildingNumber: values.shipmentBuildingNumber,
+        shipmentFlatNumber: values.shipmentFlatNumber
+          ? values.shipmentFlatNumber
+          : "Brak",
+      };
+    }
+
+    try {
+      const response = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+
+      if (response.status === 200) {
+        setLoadingStatus(LoadingStatus.SEND);
+        form.reset();
+      }
+    } catch (err) {
+      setLoadingStatus(LoadingStatus.NOT_LOADING);
+    }
   }
 
   return (
@@ -193,7 +289,7 @@ const SubleaseForm = () => {
               render={({ field }) => (
                 <FormItem className="space-y-3 mt-6">
                   <FormLabel className="text-[1rem] font-bold">
-                    Projekt graficzny:
+                    Czy posiadasz skrzynki na kubki?
                   </FormLabel>
                   <FormControl>
                     <RadioGroup
@@ -585,7 +681,21 @@ const SubleaseForm = () => {
               className={`uppercase w-full my-3 text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
               type="submit"
             >
-              WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
+              {loadingStatus === LoadingStatus.NOT_LOADING && (
+                <span className="flex">
+                  WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
+                </span>
+              )}
+              {loadingStatus === LoadingStatus.PENDING && (
+                <span>
+                  <Loader className="animate-spin" />
+                </span>
+              )}
+              {loadingStatus === LoadingStatus.SEND && (
+                <span className="flex">
+                  WYSŁANO <Send className="ml-2 " />
+                </span>
+              )}
             </Button>
             <p className="text-center text-xs">
               Na Twoją wiadomosć odpowiemy w ciągu 48h!

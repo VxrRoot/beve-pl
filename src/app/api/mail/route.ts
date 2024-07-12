@@ -12,7 +12,6 @@ export async function POST(request: Request, res: Response) {
     email,
     phone,
     message,
-    consent,
     cupType,
     design,
     cupAmount,
@@ -33,9 +32,14 @@ export async function POST(request: Request, res: Response) {
     shipmentFlatNumber,
     contactType,
     pickupDate,
+    consent,
     returnDate,
+    serviceType,
+    boxes,
+    cupProducer,
+    sendDate,
+    boxesAmount,
   } = await request.json();
-
   //   const { data, error } = await resend.emails.send({
   //     from: "Acme <onboarding@resend.dev>",
   //     to: [email],
@@ -44,15 +48,14 @@ export async function POST(request: Request, res: Response) {
   //   });
 
   const { data: companyData, error: companyError } = await resend.emails.send({
-    from: "Acme <onboarding@resend.dev>",
+    from: "Beve <onboarding@resend.dev>",
     to: [email],
-    subject: "Hello world",
+    subject: `Nowy kontakt - ${contactType}`,
     react: CompanyEmailTemplate({
       name,
       email,
       phone,
       message,
-      consent,
       cupType,
       design,
       cupAmount,
@@ -73,7 +76,13 @@ export async function POST(request: Request, res: Response) {
       shipmentPostCode,
       shipmentStreet,
       pickupDate,
+      consent,
       returnDate,
+      serviceType,
+      boxes,
+      cupProducer,
+      sendDate,
+      boxesAmount,
     }),
   });
 
@@ -81,5 +90,5 @@ export async function POST(request: Request, res: Response) {
     return NextResponse.json(companyError);
   }
 
-  return NextResponse.json({ message: "Wysłano poprawnie" });
+  return NextResponse.json({ code: 200, message: "Wysłano poprawnie" });
 }

@@ -17,7 +17,6 @@ interface KoalaWelcomeEmailProps {
   email: string;
   phone: string;
   message: string;
-  consent: string;
   cupType: string;
   design: string;
   cupAmount: string;
@@ -28,6 +27,7 @@ interface KoalaWelcomeEmailProps {
   city: string;
   street: string;
   buildingNumber: string;
+  consent: boolean;
   flatNumber: string;
   shipmentData: string;
   shipmentCountry: string;
@@ -39,6 +39,12 @@ interface KoalaWelcomeEmailProps {
   contactType: string;
   pickupDate?: string;
   returnDate?: string;
+
+  serviceType?: string;
+  boxes?: string;
+  cupProducer?: string;
+  sendDate?: string;
+  boxesAmount?: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
@@ -66,16 +72,47 @@ export const CompanyEmailTemplate = (props: KoalaWelcomeEmailProps) => (
         <Text style={paragraph}>
           <ul style={listStyle}>
             {/* Contact info */}
-            <li style={listElementStyle}>Rodzaj kubka: {props.cupType}</li>
-            <li style={listElementStyle}>Projekt graficzny: {props.design}</li>
-            <li style={listElementStyle}>Ilość kubków: {props.cupAmount}</li>
+            <Text style={paragraph}>Konfiguracja</Text>
+            {props.cupType && (
+              <li style={listElementStyle}>Rodzaj kubka: {props.cupType}</li>
+            )}
+            {props.design && (
+              <li style={listElementStyle}>
+                Projekt graficzny: {props.design}
+              </li>
+            )}
+            {props.cupAmount && (
+              <li style={listElementStyle}>Ilość kubków: {props.cupAmount}</li>
+            )}
             {props.pickupDate && (
               <li style={listElementStyle}>Data odbioru: {props.pickupDate}</li>
+            )}
+            {props.sendDate && (
+              <li style={listElementStyle}>Data wysłania: {props.sendDate}</li>
             )}
             {props.returnDate && (
               <li style={listElementStyle}>Data zwrotu: {props.returnDate}</li>
             )}
+            {props.serviceType && (
+              <li style={listElementStyle}>
+                Rodzaj usługi: {props.serviceType}
+              </li>
+            )}
+            {props.boxes && (
+              <li style={listElementStyle}>Skrzynki: {props.boxes}</li>
+            )}
+            {props.boxesAmount && (
+              <li style={listElementStyle}>
+                Ilość skrzynek: {props.boxesAmount}
+              </li>
+            )}
+            {props.cupProducer && (
+              <li style={listElementStyle}>
+                Producent kubków: {props.cupProducer}
+              </li>
+            )}
             {/* Company / Shipment Info */}
+            <Text style={paragraph}>Dane Firmy / Wysyłki</Text>
             <li style={listElementStyle}>Nip: {props.nip}</li>
             <li style={listElementStyle}>Nazwa firmy: {props.companyName}</li>
             <li style={listElementStyle}>Kraj: {props.country}</li>
@@ -88,37 +125,39 @@ export const CompanyEmailTemplate = (props: KoalaWelcomeEmailProps) => (
             <li style={listElementStyle}>
               Numer mieszkania: {props.flatNumber}
             </li>
-            {props.shipmentData && (
-              <li style={listElementStyle}>Wysyłka: {props.shipmentData}</li>
-            )}
-            {!props.shipmentData && (
+
+            <li style={listElementStyle}>Wysyłka: {props.shipmentData}</li>
+
+            {props.shipmentData === "Inne dane wysyłki" && (
               <div>
                 <li style={listElementStyle}>
-                  Kraj wysyłki: {props.shipmentData}
+                  Kraj wysyłki: {props.shipmentCountry}
                 </li>
                 <li style={listElementStyle}>
-                  Kod wysyłki: {props.shipmentData}
+                  Kod wysyłki: {props.shipmentPostCode}
                 </li>
                 <li style={listElementStyle}>
-                  Miejscowosc wysyłki: {props.shipmentData}
+                  Miejscowosc wysyłki: {props.shipmentCity}
                 </li>
                 <li style={listElementStyle}>
-                  Ulica wysyłki: {props.shipmentData}
+                  Ulica wysyłki: {props.shipmentStreet}
                 </li>
                 <li style={listElementStyle}>
-                  Numer budynku wysyłki: {props.shipmentData}
+                  Numer budynku wysyłki: {props.shipmentBuildingNumber}
                 </li>
                 <li style={listElementStyle}>
-                  Numer mieszkania wysyłki: {props.shipmentData}
+                  Numer mieszkania wysyłki: {props.shipmentFlatNumber}
                 </li>
               </div>
             )}
             {/* Customer info */}
+            <Text style={paragraph}>Dane kontaktowe</Text>
+            <li style={listElementStyle}>Imię i nazwisko: {props.name}</li>
             <li style={listElementStyle}>Adres email: {props.email}</li>
             <li style={listElementStyle}>Telefon: {props.phone}</li>
             <li style={listElementStyle}>Wiadomość: {props.message}</li>
             <li style={listElementStyle}>
-              Zgoda na przetwarzanie danych: {props.consent}
+              Zgoda na przetwarzanie danych: {props.consent && "Tak"}
             </li>
           </ul>
         </Text>

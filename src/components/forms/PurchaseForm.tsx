@@ -162,7 +162,7 @@ const PurchaseForm = () => {
 
     let message = {};
 
-    if (values.differentShipmentData) {
+    if (!values.differentShipmentData) {
       message = {
         contactType: "Zakup",
         // Order customer
@@ -210,6 +210,7 @@ const PurchaseForm = () => {
         buildingNumber: values.buildingNumber,
         flatNumber: values.flatNumber ? values.flatNumber : "Brak",
         // Shipment data
+        shipmentData: "Inne dane wysyłki",
         shipmentCountry: values.shipmentCountry,
         shipmentPostCode: values.shipmentPostCode,
         shipmentCity: values.shipmentCity,
@@ -222,7 +223,7 @@ const PurchaseForm = () => {
     }
 
     try {
-      const response = fetch("/api/mail", {
+      const response = await fetch("/api/mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -230,7 +231,10 @@ const PurchaseForm = () => {
         body: JSON.stringify(message),
       });
 
-      setLoadingStatus(LoadingStatus.SEND);
+      if (response.status === 200) {
+        setLoadingStatus(LoadingStatus.SEND);
+        form.reset();
+      }
     } catch (err) {
       setLoadingStatus(LoadingStatus.NOT_LOADING);
     }
@@ -681,7 +685,7 @@ const PurchaseForm = () => {
               )}
               {loadingStatus === LoadingStatus.SEND && (
                 <span className="flex">
-                  WYŚLIJ ABY OTRZYMAĆ OFERTĘ <Send className="ml-2 " />
+                  WYSŁANO <Send className="ml-2 " />
                 </span>
               )}
             </Button>

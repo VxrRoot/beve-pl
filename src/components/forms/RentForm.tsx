@@ -148,7 +148,7 @@ const RentForm = () => {
 
   const differentShipment = form.watch("differentShipmentData");
 
-  function onSubmit(values: z.infer<typeof FormWashingSchema>) {
+  async function onSubmit(values: z.infer<typeof FormWashingSchema>) {
     setLoadingStatus(LoadingStatus.PENDING);
 
     let message = {};
@@ -157,7 +157,7 @@ const RentForm = () => {
 
     const returnDate = new Date(values.returnDate);
 
-    if (values.differentShipmentData) {
+    if (!values.differentShipmentData) {
       message = {
         contactType: "Wynajem",
         // Order customer
@@ -170,8 +170,12 @@ const RentForm = () => {
         cupType: values.cupType,
         design: values.design,
         cupAmount: values.cupAmount,
-        pickupDate: `${pickupDate.getDate()} ${pickupDate.getMonth()} ${pickupDate.getFullYear()}`,
-        returnDate: `${returnDate.getDate()} ${returnDate.getMonth()} ${returnDate.getFullYear()}`,
+        pickupDate: `${pickupDate.getDate()}/${
+          pickupDate.getMonth() + 1
+        }/${pickupDate.getFullYear()}`,
+        returnDate: `${returnDate.getDate()}/${
+          returnDate.getMonth() + 1
+        }/${returnDate.getFullYear()}`,
         // Compeny detaila
         nip: values.nip,
         companyName: values.companyName,
@@ -197,8 +201,12 @@ const RentForm = () => {
         cupType: values.cupType,
         design: values.design,
         cupAmount: values.cupAmount,
-        pickupDate: `${pickupDate.getDate()} ${pickupDate.getMonth()} ${pickupDate.getFullYear()}`,
-        returnDate: `${returnDate.getDate()} ${returnDate.getMonth()} ${returnDate.getFullYear()}`,
+        pickupDate: `${pickupDate.getDate()}/${
+          pickupDate.getMonth() + 1
+        }/${pickupDate.getFullYear()}`,
+        returnDate: `${returnDate.getDate()}/${
+          returnDate.getMonth() + 1
+        }/${returnDate.getFullYear()}`,
         // Compeny detaila
         nip: values.nip,
         companyName: values.companyName,
@@ -209,6 +217,7 @@ const RentForm = () => {
         buildingNumber: values.buildingNumber,
         flatNumber: values.flatNumber ? values.flatNumber : "Brak",
         // Shipment data
+        shipmentData: "Inne dane wysyłki",
         shipmentCountry: values.shipmentCountry,
         shipmentPostCode: values.shipmentPostCode,
         shipmentCity: values.shipmentCity,
@@ -221,7 +230,7 @@ const RentForm = () => {
     }
 
     try {
-      const response = fetch("/api/mail", {
+      const response = await fetch("/api/mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -229,9 +238,10 @@ const RentForm = () => {
         body: JSON.stringify(message),
       });
 
-      console.log(response);
-
-      setLoadingStatus(LoadingStatus.SEND);
+      if (response.status === 200) {
+        setLoadingStatus(LoadingStatus.SEND);
+        form.reset();
+      }
     } catch (err) {
       setLoadingStatus(LoadingStatus.NOT_LOADING);
     }
@@ -743,7 +753,7 @@ const RentForm = () => {
                   </FormControl>
                   <div className="space-y-1 text-[14px]">
                     <FormLabel>
-                      Zgadzam się na{" "}
+                      Zgadzam się na
                       <Link href={links.privacyPolicy} className="underline">
                         Politykę Prywatności
                       </Link>

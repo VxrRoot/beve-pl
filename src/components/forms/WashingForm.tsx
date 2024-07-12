@@ -12,9 +12,10 @@ import { links } from "@/constants";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Loader, Send } from "lucide-react";
 import { DM_Mono } from "next/font/google";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
@@ -25,6 +26,12 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-like-checkbox-group";
 import { Textarea } from "../ui/textarea";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
+
+export enum LoadingStatus {
+  NOT_LOADING = "not loading",
+  PENDING = "pending",
+  SEND = "send",
+}
 
 const optionalShipmentFields = [
   "shipmentCountry",
@@ -113,6 +120,7 @@ export const FormWashingSchema = z
 export type FormSchemaType = z.infer<typeof FormWashingSchema>;
 
 const WashingForm = () => {
+  const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.NOT_LOADING);
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormWashingSchema),
     defaultValues: {
@@ -146,8 +154,107 @@ const WashingForm = () => {
 
   const differentShipment = form.watch("differentShipmentData");
 
-  function onSubmit(values: z.infer<typeof FormWashingSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof FormWashingSchema>) {
+    setLoadingStatus(LoadingStatus.PENDING);
+
+    const sendDate = new Date(values.sendDate);
+
+    const pickupDate = new Date(values.pickupDate);
+
+    let message = {};
+
+    if (!values.differentShipmentData) {
+      message = {
+        contactType: "Mycie",
+        // Order customer
+        name: values.nameAndSurname,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+        consent: values.termsConsent,
+        // Order details
+        serviceType: values.serviceType,
+        boxes: values.boxes,
+        cupAmount: values.cupAmount,
+        boxesAmount: values.boxesAmount,
+        cupProducer: values.cupProducer,
+        sendDate: `${sendDate.getDate()}/${
+          sendDate.getMonth() + 1
+        }/${sendDate.getFullYear()}`,
+        pickupDate: `${pickupDate.getDate()}/${
+          pickupDate.getMonth() + 1
+        }/${pickupDate.getFullYear()}`,
+        // Compeny detaila
+        nip: values.nip,
+        companyName: values.companyName,
+        country: values.country,
+        postCode: values.postCode,
+        city: values.city,
+        street: values.street,
+        buildingNumber: values.buildingNumber,
+        flatNumber: values.flatNumber ? values.flatNumber : "Brak",
+        // Shipment data
+        shipmentData: "Takie same jak na fakturze",
+      };
+    } else {
+      message = {
+        contactType: "Mycie",
+        // Order customer
+        name: values.nameAndSurname,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+        consent: values.termsConsent,
+        // Order details
+        serviceType: values.serviceType,
+        boxes: values.boxes,
+        cupAmount: values.cupAmount,
+        boxesAmount: values.boxesAmount,
+        cupProducer: values.cupProducer,
+        sendDate: `${sendDate.getDate()}/${
+          sendDate.getMonth() + 1
+        }/${sendDate.getFullYear()}`,
+        pickupDate: `${pickupDate.getDate()}/${
+          pickupDate.getMonth() + 1
+        }/${pickupDate.getFullYear()}`,
+        // Compeny detaila
+        nip: values.nip,
+        companyName: values.companyName,
+        country: values.country,
+        postCode: values.postCode,
+        city: values.city,
+        street: values.street,
+        buildingNumber: values.buildingNumber,
+        flatNumber: values.flatNumber ? values.flatNumber : "Brak",
+        // Shipment data
+        shipmentData: "Inne dane wysyłki",
+        shipmentCountry: values.shipmentCountry,
+        shipmentPostCode: values.shipmentPostCode,
+        shipmentCity: values.shipmentCity,
+        shipmentStreet: values.shipmentStreet,
+        shipmentBuildingNumber: values.shipmentBuildingNumber,
+        shipmentFlatNumber: values.shipmentFlatNumber
+          ? values.shipmentFlatNumber
+          : "Brak",
+      };
+    }
+
+    try {
+      const response = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      });
+
+      if (response.status === 200) {
+        setLoadingStatus(LoadingStatus.SEND);
+        form.reset();
+      }
+    } catch (err) {
+      setLoadingStatus(LoadingStatus.NOT_LOADING);
+    }
   }
 
   return (
@@ -694,7 +801,21 @@ const WashingForm = () => {
               className={`uppercase w-full my-3 text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
               type="submit"
             >
-              WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
+              {loadingStatus === LoadingStatus.NOT_LOADING && (
+                <span className="flex">
+                  WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
+                </span>
+              )}
+              {loadingStatus === LoadingStatus.PENDING && (
+                <span>
+                  <Loader className="animate-spin" />
+                </span>
+              )}
+              {loadingStatus === LoadingStatus.SEND && (
+                <span className="flex">
+                  WYSŁANO <Send className="ml-2 " />
+                </span>
+              )}
             </Button>
             <p className="text-center text-xs">
               Na Twoją wiadomosć odpowiemy w ciągu 48h!
