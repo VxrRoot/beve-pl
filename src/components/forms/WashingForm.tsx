@@ -141,8 +141,6 @@ const WashingForm = () => {
       email: "",
       phone: "",
       message: "",
-      // pickupDate: new Date(),
-      // sendDate: new Date(),
       shipmentCountry: "",
       shipmentPostCode: "",
       shipmentCity: "",
