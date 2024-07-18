@@ -12,12 +12,18 @@ const Header = () => {
       <div className="py-2 border-b border-primaryGray">
         <ContainerLayout>
           <div className="flex text-sm lg:text-base gap-4 items-center justify-center lg:justify-end ">
-            <a href="" className="flex text-secondaryGray gap-2 items-center">
-              <Phone className="w-4 h-4" /> + 48 123 456 789
+            <a
+              href="tel:+48504958551"
+              className="flex text-secondaryGray gap-2 items-center"
+            >
+              <Phone className="w-4 h-4" /> + 48 504 958 551
             </a>
-            <a href="" className="flex text-secondaryGray gap-2 items-center">
+            <a
+              href="mailto:beve@bevecup.pl"
+              className="flex text-secondaryGray gap-2 items-center"
+            >
               <Mail className="w-4 h-4" />
-              mail: beve@bevecup.pl
+              mail: beve@bevecup.com
             </a>
           </div>
         </ContainerLayout>

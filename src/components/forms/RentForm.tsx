@@ -35,7 +35,7 @@ import { cupAmountValues, LoadingStatus } from "./PurchaseForm";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
-const cupTypeValues = ["Type1", "Type2", "Type3"];
+const cupTypeValues = ["0.3 l", "0.4 l", "0.5 l"];
 
 const optionalShipmentFields = [
   "shipmentCountry",
@@ -48,9 +48,9 @@ const optionalShipmentFields = [
 
 export const FormWashingSchema = z
   .object({
-    design: z.enum(["mam projekt", "chce skorzystac z gotowych"], {
-      required_error: "To pole jest wymagane",
-    }),
+    // design: z.enum(["mam projekt", "chce skorzystac z gotowych"], {
+    //   required_error: "To pole jest wymagane",
+    // }),
     returnDate: z.date({ required_error: "Data jest wymagana" }),
     pickupDate: z.date({ required_error: "Data jest wymagana" }),
     cupType: z.string({
@@ -124,7 +124,7 @@ const RentForm = () => {
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormWashingSchema),
     defaultValues: {
-      design: "mam projekt",
+      // design: "mam projekt",
       flatNumber: "",
       nip: "",
       companyName: "",
@@ -168,7 +168,7 @@ const RentForm = () => {
         consent: values.termsConsent,
         // Order details
         cupType: values.cupType,
-        design: values.design,
+        // design: values.design,
         cupAmount: values.cupAmount,
         pickupDate: `${pickupDate.getDate()}/${
           pickupDate.getMonth() + 1
@@ -199,7 +199,7 @@ const RentForm = () => {
         consent: values.termsConsent,
         // Order details
         cupType: values.cupType,
-        design: values.design,
+        // design: values.design,
         cupAmount: values.cupAmount,
         pickupDate: `${pickupDate.getDate()}/${
           pickupDate.getMonth() + 1
@@ -284,7 +284,8 @@ const RentForm = () => {
                 </FormItem>
               )}
             />
-            <FormField
+            {/* DESIGN FIELD */}
+            {/* <FormField
               control={form.control}
               name="design"
               render={({ field }) => (
@@ -319,7 +320,7 @@ const RentForm = () => {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
             <FormField
               control={form.control}
               name="cupAmount"

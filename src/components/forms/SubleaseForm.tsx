@@ -19,13 +19,6 @@ import { z } from "zod";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-like-checkbox-group";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
 import { Textarea } from "../ui/textarea";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
@@ -35,8 +28,6 @@ export enum LoadingStatus {
   PENDING = "pending",
   SEND = "send",
 }
-
-const cupProducerTypes = ["Nike", "Adidas", "NewBalance"];
 
 const optionalShipmentFields = [
   "shipmentCountry",
@@ -52,9 +43,11 @@ export const FormWashingSchema = z
     hasBoxes: z.enum(["tak", "nie"], {
       required_error: "To pole jest wymagane",
     }),
-    cupProducer: z.string({
-      required_error: "To pole jest wymagane",
-    }),
+    cupProducer: z
+      .string({
+        required_error: "To pole jest wymagane",
+      })
+      .min(1, { message: "To pole jest wymagane" }),
     cupAmount: z
       .string({ required_error: "To pole jest wymagane" })
       .regex(/^\d*$/, "To pole musi być numerem")
@@ -129,6 +122,7 @@ const SubleaseForm = () => {
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormWashingSchema),
     defaultValues: {
+      cupProducer: "",
       cupAmount: "",
       boxesAmount: "",
       hasBoxes: "tak",
@@ -156,8 +150,6 @@ const SubleaseForm = () => {
   const differentShipment = form.watch("differentShipmentData");
 
   async function onSubmit(values: z.infer<typeof FormWashingSchema>) {
-    console.log(values);
-
     setLoadingStatus(LoadingStatus.PENDING);
 
     let message = {};
@@ -258,27 +250,13 @@ const SubleaseForm = () => {
               control={form.control}
               name="cupProducer"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex-1">
                   <FormLabel className="text-[1rem] font-bold">
-                    Producent kubka:
+                    Producent kubków:
                   </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Wybierz z listy" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {cupProducerTypes.map((type, idx) => (
-                        <SelectItem key={`${type}-${idx}`} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <FormControl>
+                    <Input placeholder="Nazwa producenta" {...field} />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}

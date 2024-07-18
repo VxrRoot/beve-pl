@@ -36,7 +36,7 @@ export enum LoadingStatus {
   SEND = "send",
 }
 
-const cupTypeValues = ["Type1", "Type2", "Type3"];
+const cupTypeValues = ["0.3 l", "0.4 l", "0.5 l"];
 
 export const cupAmountValues = [
   "400",
