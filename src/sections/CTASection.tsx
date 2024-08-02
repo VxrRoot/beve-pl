@@ -2,7 +2,7 @@ import CTAButton from "@/components/CTAButton";
 import ContainerLayout from "@/layouts/ContainerLayout";
 import { Mail, Phone } from "lucide-react";
 import { DM_Mono } from "next/font/google";
-import ctaImage from "../../public/beve-cta-image.webp";
+import ctaImage from "../../public/cta-img.webp";
 import React from "react";
 import Image from "next/image";
 import LogoWhite from "@/icons/LogoWhite";

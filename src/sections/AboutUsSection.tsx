@@ -1,7 +1,7 @@
 import BeveDecorationIcon from "@/icons/BeveDecorationIcon";
 import ContainerLayout from "@/layouts/ContainerLayout";
 import { DM_Mono } from "next/font/google";
-import aboutImg from "../../public/about-img.png";
+import aboutImg from "../../public/about-us-img.png";
 import Image from "next/image";
 import React from "react";
 
@@ -67,14 +67,14 @@ const AboutUsSection = () => {
               </p>
             </div>
           </div>
-          <div className="flex-1 flex justify-center mt-12 lg:mt-0 items-center bg-red-500">
-            {/* <Image
+          <div className="flex-1 flex justify-center mt-12 lg:mt-0 items-center ">
+            <Image
               alt=""
               src={aboutImg}
               width={1000}
               height={1000}
               className="w-full max-w-[346px]"
-            /> */}
+            />
           </div>
         </div>
       </ContainerLayout>

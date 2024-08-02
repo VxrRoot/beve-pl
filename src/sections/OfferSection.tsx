@@ -3,7 +3,9 @@ import CartIcon from "@/icons/CartIcon";
 import CheckIcon from "@/icons/CheckIcon";
 import HandIcon from "@/icons/HandIcon";
 import ContainerLayout from "@/layouts/ContainerLayout";
+import offerImg from "../../public/forms-section.webp";
 import { DM_Mono } from "next/font/google";
+import Image from "next/image";
 import React from "react";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
@@ -19,7 +21,13 @@ const OfferSection = () => {
             >
               WYPOŻYCZ LUB KUP WIELORAZOWE KUBKI BEVE
             </h2>
-            <div className="w-full h-60 mt-4 bg-red-500"></div>
+            <div className="w-full h-60 mt-10 ">
+              <Image
+                src={offerImg}
+                alt=""
+                className="max-w-80 md:max-w-[30rem] lg:max-w-none w-full"
+              />
+            </div>
           </div>
           <div className="flex-1 mt-10 lg:mt-0 lg:justify-end flex  md:pl-20 flex-col md:flex-row items-center">
             <div className="lg:p-10 p-6 w-full bg-white rounded-[0.75rem] flex-1 max-w-[366px] text-black">

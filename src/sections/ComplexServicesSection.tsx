@@ -8,6 +8,9 @@ import PersonIcon from "@/icons/PersonIcon";
 import TruckIcon from "@/icons/TruckIcon";
 import ContainerLayout from "@/layouts/ContainerLayout";
 import { DM_Mono } from "next/font/google";
+import complexServicesImg from "../../public/complex-services-img.png";
+import Image from "next/image";
+
 import React from "react";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
@@ -52,7 +55,7 @@ const complexServices = [
 
 const ComplexServices = () => {
   return (
-    <section className="pt-36 mb-20" id="uslugi">
+    <section className="pt-36 mb-20 overflow-hidden" id="uslugi">
       <ContainerLayout>
         <div className="flex items-start lg:items-center">
           <div>
@@ -80,7 +83,15 @@ const ComplexServices = () => {
             ))}
           </div>
           <div className="flex-1 relative lg:pt-[10.25rem]">
-            <div className="absolute hidden lg:block left-0 top-5 h-40 bg-red-500 w-full"></div>
+            <div className="absolute hidden lg:block left-0 top-5 h-auto   w-full">
+              <Image
+                alt=""
+                src={complexServicesImg}
+                width={1000}
+                height={1000}
+                className="w-[32rem] absolute -bottom-[10.25rem] -right-[3rem]"
+              />
+            </div>
             {complexServices.slice(4).map((service, idx) => (
               <div
                 key={`${service.name}-${idx}`}

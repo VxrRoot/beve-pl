@@ -3,6 +3,8 @@ import CheckFatIcon from "@/icons/CheckFatIcon";
 import ContainerLayout from "@/layouts/ContainerLayout";
 import { DM_Mono } from "next/font/google";
 import React from "react";
+import Image from "next/image";
+import complexServicesImg from "../../public/comfort-offer-img.png";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
@@ -41,7 +43,15 @@ const OfferDetailsSection = () => {
               <AdvantageItem key={`${item}-${idx}`} text={item} />
             ))}
           </div>
-          <div className="lg:w-[17.31rem] w-full bg-red-500 mt-10 lg:mt-0"></div>
+          <div className="lg:w-[17.31rem] w-full  mt-10 lg:mt-0">
+            <Image
+              alt=""
+              src={complexServicesImg}
+              width={1000}
+              height={1000}
+              className="w-full max-w-[346px] mx-auto"
+            />
+          </div>
         </div>
       </ContainerLayout>
     </section>

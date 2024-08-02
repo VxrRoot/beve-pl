@@ -1,4 +1,6 @@
-import slideOneImage from "../../public/BG.webp";
+import slideOneImage from "../../public/Slider-Eko.webp";
+import slideTwoImage from "../../public/Slider-design.webp";
+import slideThreeImage from "../../public/Slider-myjnia.webp";
 import React from "react";
 import HeroSlider from "@/components/HeroSlider";
 
@@ -13,13 +15,13 @@ const sliderSlides = [
     heading: "WIELORAZOWE KUBKI NA WYDARZENIA BEZ ZBĘDNYCH FORMALNOŚCI",
     subHeading:
       "Lorem ipsum dolor sit amet consectetur. Semper quam velit id vel tincidunt id diam euismod. ",
-    img: slideOneImage,
+    img: slideTwoImage,
   },
   {
     heading: "WIELORAZOWE KUBKI NA WYDARZENIA BEZ ZBĘDNYCH FORMALNOŚCI",
     subHeading:
       "Lorem ipsum dolor sit amet consectetur. Semper quam velit id vel tincidunt id diam euismod. ",
-    img: slideOneImage,
+    img: slideThreeImage,
   },
 ];
 

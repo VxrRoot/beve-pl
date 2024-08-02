@@ -1,7 +1,9 @@
 import CTAButton from "@/components/CTAButton";
 import ContainerLayout from "@/layouts/ContainerLayout";
 import { DM_Mono, Finger_Paint } from "next/font/google";
+import infoImg from "../../public/few-lives-img.webp";
 import React from "react";
+import Image from "next/image";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
@@ -9,7 +11,7 @@ const fingerPaint = Finger_Paint({ subsets: [], weight: ["400"] });
 
 const InfoSection = () => {
   return (
-    <section className="relative text-white bg-gradient-to-r from-primaryGreen to-secondaryGreen py-[4.5rem]">
+    <section className="text-white bg-gradient-to-r from-primaryGreen to-secondaryGreen py-[4.5rem]">
       <ContainerLayout>
         <div className="flex flex-col lg:flex-row">
           <div className="flex-1">
@@ -26,7 +28,15 @@ const InfoSection = () => {
             </h2>
             <CTAButton whiteHover={true} />
           </div>
-          <div className="flex-1 bg-red-500"></div>
+          <div className="lg:flex-1 relative  min-h-60">
+            <Image
+              src={infoImg}
+              alt="Kubki beve"
+              width={2000}
+              height={2000}
+              className="absolute -bottom-[4.5rem] h-60 lg:h-auto w-auto right-0 max-w-[700px]"
+            />
+          </div>
         </div>
       </ContainerLayout>
     </section>
