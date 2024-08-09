@@ -28,13 +28,13 @@ const InfoSection = () => {
             </h2>
             <CTAButton whiteHover={true} />
           </div>
-          <div className="lg:flex-1 relative  min-h-60">
+          <div className="lg:flex-1 relative  lg:min-h-60 min-h-40">
             <Image
               src={infoImg}
               alt="Kubki beve"
               width={2000}
               height={2000}
-              className="absolute -bottom-[4.5rem] h-60 lg:h-auto w-auto right-0 max-w-[700px]"
+              className="absolute -bottom-[4.5rem] lg:h-auto lg:w-auto right-0 max-w-[550px] lg:max-w-[700px] w-full h-auto"
             />
           </div>
         </div>

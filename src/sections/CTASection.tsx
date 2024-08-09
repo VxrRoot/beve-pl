@@ -2,7 +2,7 @@ import CTAButton from "@/components/CTAButton";
 import ContainerLayout from "@/layouts/ContainerLayout";
 import { Mail, Phone } from "lucide-react";
 import { DM_Mono } from "next/font/google";
-import ctaImage from "../../public/cta-img.webp";
+import ctaImage from "../../public/cta-image.png";
 import React from "react";
 import Image from "next/image";
 import LogoWhite from "@/icons/LogoWhite";
@@ -13,20 +13,20 @@ const CTASection = () => {
   return (
     <section>
       <ContainerLayout>
-        <div className="overflow-hidden relative rounded-[18px] p-6 lg:p-16 bg-gradient-to-r from-primaryGreen to-secondaryGreen">
+        <div className="overflow-hidden relative rounded-[18px] p-6 md:p-16 bg-gradient-to-r from-primaryGreen to-secondaryGreen">
           <div>
-            <div className="flex flex-col mt-16 lg:mt-0">
+            <div className="flex flex-col mt-16 md:mt-0">
               <h2
-                className={`text-[2.625rem] leading-[2.7rem] lg:text-[2.5rem] lg:leading-[2.8rem] text-white tracking-[0.9px] ${mono.className}`}
+                className={`text-[2.625rem] leading-[2.7rem] md:text-[2.5rem] md:leading-[2.8rem] text-white tracking-[0.9px] ${mono.className}`}
               >
-                SKONTAKTUJ <br className="lg:hidden" /> SIĘ Z NAMI <br /> NIE
-                CZEKAJ <br className="lg:hidden" /> #BEVE
+                SKONTAKTUJ <br className="md:hidden" /> SIĘ Z NAMI <br /> NIE
+                CZEKAJ <br className="md:hidden" /> #BEVE
               </h2>
               <span className=" mt-6 leading-[1.5rem] max-w-[460px] text-white tracking-[1.04px] font-[400]">
                 <CTAButton whiteHover={true} />
               </span>
             </div>
-            <div className="border-primaryGray/20 border-t flex flex-col lg:flex-row gap-4 pt-4 mt-12 lg:mt-20">
+            <div className="border-primaryGray/20 border-t flex flex-col md:flex-row gap-4 pt-4 mt-12 md:mt-20">
               <a href="" className="flex text-white gap-2 items-center">
                 <Phone className="w-4 h-4" /> + 48 123 456 789
               </a>
@@ -36,17 +36,14 @@ const CTASection = () => {
               </a>
             </div>
           </div>
-          <div className="relative w-full md:absolute h-52 bottom-0 right-0 lg:w-1/2">
+          <div className="relative w-full md:absolute h-52 bottom-0 right-0 md:w-1/2">
             <Image
               src={ctaImage}
               alt="Kubki beve"
               width={2000}
               height={2000}
-              className="bg-cover bg-center -bottom-8 max-w-[20rem] lg:max-w-full absolute lg:bottom-0 "
+              className="bg-cover bg-center -bottom-8 max-w-[20rem] md:max-w-full absolute md:bottom-0 "
             />
-          </div>
-          <div className="absolute left-8 lg:left-auto top-8 lg:top-16 lg:right-16">
-            <LogoWhite />
           </div>
         </div>
       </ContainerLayout>

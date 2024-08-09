@@ -30,7 +30,7 @@ const HeroSlider = ({ slides }: IProps) => {
   return (
     <div className="max-w-[1440px] mx-auto relative">
       <Swiper
-        spaceBetween={10}
+        spaceBetween={0}
         slidesPerView={1}
         loop={true}
         speed={2000}
@@ -60,7 +60,7 @@ const HeroSlider = ({ slides }: IProps) => {
                 <h4 className="mt-6">{subHeading}</h4>
                 <Link
                   className={`${mono.className} mt-8 hover:underline transition-all whitespace-nowrap w-fit  flex items-center justify-center  tracking-[1.06px] py-3  rounded-[6px]  text-white uppercase`}
-                  href={links.purchase}
+                  href={"/#oferta"}
                 >
                   Sprawdź ofertę <ArrowUpRight className="ml-2 " />
                 </Link>

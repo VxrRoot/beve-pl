@@ -12,10 +12,12 @@ import { links } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, Loader, Send } from "lucide-react";
 import { DM_Mono } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import purchaseImg from "../../../public/purchase-img.webp";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-like-checkbox-group";
@@ -244,104 +246,109 @@ const PurchaseForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex flex-col lg:flex-row">
-          <div className="flex-1 lg:border-[#E5E5E5] lg:border-r lg:pr-10">
-            <h1 className="text-2xl tracking-[-0.5px] mb-6">
-              1. Konfiguracja zakupu kubków
-            </h1>
-            <FormField
-              control={form.control}
-              name="cupType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[1rem] font-bold">
-                    Rodzaj kubka:
-                  </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Wybierz z listy" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {cupTypeValues.map((type, idx) => (
-                        <SelectItem key={`${type}-${idx}`} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="design"
-              render={({ field }) => (
-                <FormItem className="space-y-3 mt-6">
-                  <FormLabel className="text-[1rem] font-bold">
-                    Projekt graficzny:
-                  </FormLabel>
-                  <FormControl>
-                    <RadioGroup
+          <div className="flex-1 lg:border-[#E5E5E5] lg:border-r lg:pr-10  flex flex-col justify-between">
+            <div>
+              <h1 className="text-2xl tracking-[-0.5px] mb-6">
+                1. Konfiguracja zakupu kubków
+              </h1>
+              <FormField
+                control={form.control}
+                name="cupType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-[1rem] font-bold">
+                      Rodzaj kubka:
+                    </FormLabel>
+                    <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="flex flex-col space-y-1"
                     >
-                      <FormItem className="flex items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value="mam projekt" />
-                        </FormControl>
-                        <FormLabel className="font-normal text-[1rem]">
-                          Mam własny projekt graficzny
-                        </FormLabel>
-                      </FormItem>
-                      <FormItem className="flex items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value="chce skorzystac z gotowych" />
-                        </FormControl>
-                        <FormLabel className="font-normal text-[1rem]">
-                          Chce skorzystać z gotowych wzorców
-                        </FormLabel>
-                      </FormItem>
-                    </RadioGroup>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="cupAmount"
-              render={({ field }) => (
-                <FormItem className="mt-6">
-                  <FormLabel className="text-[1rem] font-bold">
-                    Ilość kubków:
-                  </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Wybierz z listy" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {cupTypeValues.map((type, idx) => (
+                          <SelectItem key={`${type}-${idx}`} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="design"
+                render={({ field }) => (
+                  <FormItem className="space-y-3 mt-6">
+                    <FormLabel className="text-[1rem] font-bold">
+                      Projekt graficzny:
+                    </FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Wybierz liczbę sztuk z listy" />
-                      </SelectTrigger>
+                      <RadioGroup
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        className="flex flex-col space-y-1"
+                      >
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="mam projekt" />
+                          </FormControl>
+                          <FormLabel className="font-normal text-[1rem]">
+                            Mam własny projekt graficzny
+                          </FormLabel>
+                        </FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="chce skorzystac z gotowych" />
+                          </FormControl>
+                          <FormLabel className="font-normal text-[1rem]">
+                            Chce skorzystać z gotowych wzorców
+                          </FormLabel>
+                        </FormItem>
+                      </RadioGroup>
                     </FormControl>
-                    <SelectContent>
-                      {cupAmountValues.map((type, idx) => (
-                        <SelectItem key={`${type}-${idx}`} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="cupAmount"
+                render={({ field }) => (
+                  <FormItem className="mt-6">
+                    <FormLabel className="text-[1rem] font-bold">
+                      Ilość kubków:
+                    </FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Wybierz liczbę sztuk z listy" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {cupAmountValues.map((type, idx) => (
+                          <SelectItem key={`${type}-${idx}`} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="hidden mb-[-40px] lg:flex items-end mt-auto">
+              <Image src={purchaseImg} alt="Kubki beve" />
+            </div>
           </div>
           <div className="flex-1 lg:pl-10 ">
             <h2 className="text-2xl tracking-[-0.5px] mb-6 mt-10 lg:mt-0">
@@ -670,11 +677,11 @@ const PurchaseForm = () => {
               )}
             />
             <Button
-              className={`uppercase w-full my-3 text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
+              className={`uppercase w-full my-3 text-xs  sm:text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
               type="submit"
             >
               {loadingStatus === LoadingStatus.NOT_LOADING && (
-                <span className="flex">
+                <span className="flex justify-center items-center">
                   WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
                 </span>
               )}

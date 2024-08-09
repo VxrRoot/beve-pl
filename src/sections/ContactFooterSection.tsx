@@ -26,7 +26,7 @@ const ContactFooterSection = () => {
             </a>
           </div>
         </div>
-        <div className="flex-1  min-h-10">
+        <div className="flex-1  min-h-44">
           <Image
             alt=""
             src={footerImage}

@@ -6,22 +6,21 @@ import HeroSlider from "@/components/HeroSlider";
 
 const sliderSlides = [
   {
-    heading: "WIELORAZOWE KUBKI NA WYDARZENIA BEZ ZBĘDNYCH FORMALNOŚCI",
+    heading: "DESIGN",
     subHeading:
-      "Lorem ipsum dolor sit amet consectetur. Semper quam velit id vel tincidunt id diam euismod. ",
-    img: slideOneImage,
-  },
-  {
-    heading: "WIELORAZOWE KUBKI NA WYDARZENIA BEZ ZBĘDNYCH FORMALNOŚCI",
-    subHeading:
-      "Lorem ipsum dolor sit amet consectetur. Semper quam velit id vel tincidunt id diam euismod. ",
+      "Nie masz pomysłu na grafikę na kubku? Nasi graficy przygotują atrakcyjne, pełne kolorów propozycje, idealnie dopasowane do Twojej marki.",
     img: slideTwoImage,
   },
   {
-    heading: "WIELORAZOWE KUBKI NA WYDARZENIA BEZ ZBĘDNYCH FORMALNOŚCI",
-    subHeading:
-      "Lorem ipsum dolor sit amet consectetur. Semper quam velit id vel tincidunt id diam euismod. ",
+    heading: "MYJNIA I LOGISTYKA",
+    subHeading: "Zajmij się na nalewaniem, a logistykę i mycie zostaw nam.",
     img: slideThreeImage,
+  },
+  {
+    heading: "EKOLOGIA",
+    subHeading:
+      "Jeden nasz kubek w trakcie swojego cyklu życia zaoszczędza pięć 60-litrowych worków na śmieci. Po zakończeniu służby, dzięki procesowi recyklingu, otrzymuje nowe życie.",
+    img: slideOneImage,
   },
 ];
 

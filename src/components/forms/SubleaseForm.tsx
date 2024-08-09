@@ -16,10 +16,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import subleaseImg from "../../../public/podnajem-img.webp";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-like-checkbox-group";
 import { Textarea } from "../ui/textarea";
+import Image from "next/image";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
@@ -242,72 +244,21 @@ const SubleaseForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex flex-col lg:flex-row">
-          <div className="flex-1 lg:border-[#E5E5E5] lg:border-r lg:pr-10">
-            <h1 className="text-2xl tracking-[-0.5px] mb-6">
-              1. Konfiguracja zakupu kubków
-            </h1>
-            <FormField
-              control={form.control}
-              name="cupProducer"
-              render={({ field }) => (
-                <FormItem className="flex-1">
-                  <FormLabel className="text-[1rem] font-bold">
-                    Producent kubków:
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="Nazwa producenta" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="hasBoxes"
-              render={({ field }) => (
-                <FormItem className="space-y-3 mt-6">
-                  <FormLabel className="text-[1rem] font-bold">
-                    Czy posiadasz skrzynki na kubki?
-                  </FormLabel>
-                  <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      className="flex flex-col space-y-1"
-                    >
-                      <FormItem className="flex items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value="tak" />
-                        </FormControl>
-                        <FormLabel className="font-normal text-[1rem]">
-                          Tak
-                        </FormLabel>
-                      </FormItem>
-                      <FormItem className="flex items-center space-x-3 space-y-0">
-                        <FormControl>
-                          <RadioGroupItem value="nie" />
-                        </FormControl>
-                        <FormLabel className="font-normal text-[1rem]">
-                          Nie
-                        </FormLabel>
-                      </FormItem>
-                    </RadioGroup>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="mt-6 flex flex-col gap-4 md:flex-row">
+          <div className="flex-1 lg:border-[#E5E5E5] lg:border-r lg:pr-10 flex flex-col justify-between">
+            <div>
+              <h1 className="text-2xl tracking-[-0.5px] mb-6">
+                1. Konfiguracja zakupu kubków
+              </h1>
               <FormField
                 control={form.control}
-                name="cupAmount"
+                name="cupProducer"
                 render={({ field }) => (
                   <FormItem className="flex-1">
                     <FormLabel className="text-[1rem] font-bold">
-                      Ilość kubków:
+                      Producent kubków:
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="np. 5000" {...field} type="number" />
+                      <Input placeholder="Nazwa producenta" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -315,19 +266,79 @@ const SubleaseForm = () => {
               />
               <FormField
                 control={form.control}
-                name="boxesAmount"
+                name="hasBoxes"
                 render={({ field }) => (
-                  <FormItem className="flex-1">
+                  <FormItem className="space-y-3 mt-6">
                     <FormLabel className="text-[1rem] font-bold">
-                      Ilość skrzynek:
+                      Czy posiadasz skrzynki na kubki?
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="np. 50" {...field} type="number" />
+                      <RadioGroup
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        className="flex flex-col space-y-1"
+                      >
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="tak" />
+                          </FormControl>
+                          <FormLabel className="font-normal text-[1rem]">
+                            Tak
+                          </FormLabel>
+                        </FormItem>
+                        <FormItem className="flex items-center space-x-3 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="nie" />
+                          </FormControl>
+                          <FormLabel className="font-normal text-[1rem]">
+                            Nie
+                          </FormLabel>
+                        </FormItem>
+                      </RadioGroup>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              <div className="mt-6 flex flex-col gap-4 md:flex-row">
+                <FormField
+                  control={form.control}
+                  name="cupAmount"
+                  render={({ field }) => (
+                    <FormItem className="flex-1">
+                      <FormLabel className="text-[1rem] font-bold">
+                        Ilość kubków:
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="np. 5000"
+                          {...field}
+                          type="number"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="boxesAmount"
+                  render={({ field }) => (
+                    <FormItem className="flex-1">
+                      <FormLabel className="text-[1rem] font-bold">
+                        Ilość skrzynek:
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="np. 50" {...field} type="number" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <div className="hidden mb-[-40px] lg:flex items-end mt-auto">
+              <Image src={subleaseImg} alt="Kubki beve" />
             </div>
           </div>
           <div className="flex-1 lg:pl-10 ">
@@ -656,11 +667,11 @@ const SubleaseForm = () => {
               )}
             />
             <Button
-              className={`uppercase w-full my-3 text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
+              className={`uppercase w-full my-3 text-xs  sm:text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
               type="submit"
             >
               {loadingStatus === LoadingStatus.NOT_LOADING && (
-                <span className="flex">
+                <span className="flex justify-center items-center">
                   WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
                 </span>
               )}

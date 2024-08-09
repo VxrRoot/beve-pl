@@ -22,7 +22,6 @@ import { Button } from "../ui/button";
 import { Calendar } from "../ui/calendar";
 import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-like-checkbox-group";
 import {
   Select,
   SelectContent,
@@ -31,6 +30,8 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
+import Image from "next/image";
+import rentImg from "../../../public/rent-img.webp";
 import { cupAmountValues, LoadingStatus } from "./PurchaseForm";
 
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
@@ -251,41 +252,42 @@ const RentForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex flex-col lg:flex-row">
-          <div className="flex-1 lg:border-[#E5E5E5] lg:border-r lg:pr-10">
-            <h1 className="text-2xl tracking-[-0.5px] mb-6">
-              1. Konfiguracja zakupu kubków
-            </h1>
-            <FormField
-              control={form.control}
-              name="cupType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[1rem] font-bold">
-                    Rodzaj kubka:
-                  </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Wybierz z listy" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {cupTypeValues.map((type, idx) => (
-                        <SelectItem key={`${type}-${idx}`} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            {/* DESIGN FIELD */}
-            {/* <FormField
+          <div className="flex-1 lg:border-[#E5E5E5] lg:border-r lg:pr-10 flex flex-col justify-between ">
+            <div>
+              <h1 className="text-2xl tracking-[-0.5px] mb-6">
+                1. Konfiguracja zakupu kubków
+              </h1>
+              <FormField
+                control={form.control}
+                name="cupType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-[1rem] font-bold">
+                      Rodzaj kubka:
+                    </FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Wybierz z listy" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {cupTypeValues.map((type, idx) => (
+                          <SelectItem key={`${type}-${idx}`} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {/* DESIGN FIELD */}
+              {/* <FormField
               control={form.control}
               name="design"
               render={({ field }) => (
@@ -320,122 +322,126 @@ const RentForm = () => {
                   <FormMessage />
                 </FormItem>
               )}
-            /> */}
-            <FormField
-              control={form.control}
-              name="cupAmount"
-              render={({ field }) => (
-                <FormItem className="mt-6">
-                  <FormLabel className="text-[1rem] font-bold">
-                    Ilość kubków:
-                  </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Wybierz liczbę sztuk z listy" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {cupAmountValues.map((type, idx) => (
-                        <SelectItem key={`${type}-${idx}`} value={type}>
-                          {type}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <div className="text-[#B2B2B2] mt-6 flex">
-              <Info className="text-[#B2B2B2] mt-[2px] mr-4" />
-              <span>
-                Kubki wynajmowane są w skrzynkach, których koszt wynosi
-                X&nbsp;dla 400 szt.
-              </span>
-            </div>
-            <div className="mt-6 flex flex-col gap-4 md:flex-row">
+              / > */}
               <FormField
                 control={form.control}
-                name="pickupDate"
+                name="cupAmount"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col w-full">
+                  <FormItem className="mt-6">
                     <FormLabel className="text-[1rem] font-bold">
-                      Data wydarzenia:
+                      Ilość kubków:
                     </FormLabel>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className={cn(
-                              "w-full pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground"
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, "yyyy-MM-dd")
-                            ) : (
-                              <span>Data odbioru</span>
-                            )}
-                            <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={field.value}
-                          onSelect={field.onChange}
-                          initialFocus
-                        />
-                      </PopoverContent>
-                    </Popover>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Wybierz liczbę sztuk z listy" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {cupAmountValues.map((type, idx) => (
+                          <SelectItem key={`${type}-${idx}`} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="returnDate"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col w-full md:mt-[2rem]">
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className={cn(
-                              " w-full pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground"
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, "yyyy-MM-dd")
-                            ) : (
-                              <span>Data zwrotu</span>
-                            )}
-                            <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={field.value}
-                          onSelect={field.onChange}
-                          initialFocus
-                        />
-                      </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+
+              <div className="text-[#B2B2B2] mt-6 flex">
+                <Info className="text-[#B2B2B2] mt-[2px] mr-4" />
+                <span>
+                  Kubki wynajmowane są w skrzynkach, których koszt wynosi
+                  X&nbsp;dla 400 szt.
+                </span>
+              </div>
+              <div className="mt-6 flex flex-col gap-4 md:flex-row">
+                <FormField
+                  control={form.control}
+                  name="pickupDate"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col w-full">
+                      <FormLabel className="text-[1rem] font-bold">
+                        Data wydarzenia:
+                      </FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-full pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "yyyy-MM-dd")
+                              ) : (
+                                <span>Data odbioru</span>
+                              )}
+                              <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={field.value}
+                            onSelect={field.onChange}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="returnDate"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col w-full md:mt-[2rem]">
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                " w-full pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "yyyy-MM-dd")
+                              ) : (
+                                <span>Data zwrotu</span>
+                              )}
+                              <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={field.value}
+                            onSelect={field.onChange}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <div className="hidden mb-[-40px] lg:flex items-end mt-auto">
+              <Image src={rentImg} alt="Kubki beve" />
             </div>
           </div>
           <div className="flex-1 lg:pl-10 ">
@@ -764,11 +770,11 @@ const RentForm = () => {
               )}
             />
             <Button
-              className={`uppercase w-full my-3 text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
+              className={`uppercase w-full my-3 text-xs  sm:text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
               type="submit"
             >
               {loadingStatus === LoadingStatus.NOT_LOADING && (
-                <span className="flex">
+                <span className="flex justify-center items-center">
                   WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
                 </span>
               )}

@@ -796,11 +796,11 @@ const WashingForm = () => {
               )}
             />
             <Button
-              className={`uppercase w-full my-3 text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
+              className={`uppercase w-full my-3 text-xs  sm:text-base py-3 hover:bg-primaryGreen tracking-[0.84px] bg-secondaryGreen ${mono.className}`}
               type="submit"
             >
               {loadingStatus === LoadingStatus.NOT_LOADING && (
-                <span className="flex">
+                <span className="flex justify-center items-center">
                   WYŚLIJ ABY OTRZYMAĆ OFERTĘ <ArrowUpRight className="ml-2 " />
                 </span>
               )}

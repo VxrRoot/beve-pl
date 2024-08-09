@@ -25,7 +25,7 @@ const adventages = [
 
 const OfferDetailsSection = () => {
   return (
-    <section className="py-20" id="o-kubkach">
+    <section className="py-20" id="oferta">
       <ContainerLayout>
         <div className="flex items-start lg:items-center">
           <div>
@@ -60,7 +60,7 @@ const OfferDetailsSection = () => {
 
 const AdvantageItem = ({ text }: { text: string }) => (
   <div className="flex items-start bg-primaryGreen/10 px-[1rem] py-[0.82rem] rounded-[0.625rem]">
-    <span className="pt-1">
+    <span className="pt-1.5">
       <CheckFatIcon />
     </span>
     <p className="ml-4" dangerouslySetInnerHTML={{ __html: text }} />
