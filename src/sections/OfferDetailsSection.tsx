@@ -43,13 +43,13 @@ const OfferDetailsSection = () => {
               <AdvantageItem key={`${item}-${idx}`} text={item} />
             ))}
           </div>
-          <div className="lg:w-[17.31rem] w-full  mt-10 lg:mt-0">
+          <div className="lg:w-[17.31rem] w-full mt-10 lg:mt-0">
             <Image
               alt=""
               src={complexServicesImg}
               width={1000}
               height={1000}
-              className="w-full max-w-[346px] mx-auto"
+              className="w-1/2 lg:w-full max-w-[346px] mx-auto"
             />
           </div>
         </div>

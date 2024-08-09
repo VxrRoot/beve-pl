@@ -73,7 +73,7 @@ const AboutUsSection = () => {
               src={aboutImg}
               width={1000}
               height={1000}
-              className="w-full max-w-[346px]"
+              className="w-1/2 lg:w-full max-w-[346px]"
             />
           </div>
         </div>
