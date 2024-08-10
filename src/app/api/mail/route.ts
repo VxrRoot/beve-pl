@@ -48,9 +48,9 @@ export async function POST(request: Request, res: Response) {
   //   });
 
   const { data: companyData, error: companyError } = await resend.emails.send({
-    from: "Beve <onboarding@resend.dev>",
-    to: [email],
-    subject: `Nowy kontakt - ${contactType}`,
+    from: "Beve <kontakt@bevecup.com>",
+    to: ["beve@bevecup.com", email],
+    subject: `Beve kontakt - ${contactType}`,
     react: CompanyEmailTemplate({
       name,
       email,

@@ -54,20 +54,12 @@ const baseUrl = process.env.VERCEL_URL
 export const CompanyEmailTemplate = (props: KoalaWelcomeEmailProps) => (
   <Html>
     <Head />
-    <Preview>
-      The sales intelligence platform that helps you uncover qualified leads.
-    </Preview>
+    <Preview>Beve Kontakt</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Img
-          src={`${baseUrl}/logo.png`}
-          width="170"
-          height="50"
-          alt="Koala"
-          style={logo}
-        />
         <Text style={paragraph}>
-          Nowa wiadomość od: {props.name} - {props.contactType}
+          {/* Nowa wiadomość od: {props.name} -  */}
+          {props.contactType}
         </Text>
         <Text style={paragraph}>
           <ul style={listStyle}>
