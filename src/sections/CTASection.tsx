@@ -27,8 +27,11 @@ const CTASection = () => {
               </span>
             </div>
             <div className="border-primaryGray/20 border-t flex flex-col md:flex-row gap-4 pt-4 mt-12 md:mt-20">
-              <a href="" className="flex text-white gap-2 items-center">
-                <Phone className="w-4 h-4" /> + 48 123 456 789
+              <a
+                href="tel:+48504958551"
+                className="flex text-white gap-2 items-center"
+              >
+                <Phone className="w-4 h-4" /> +48 504 958 551
               </a>
               <a href="" className="flex text-white gap-2 items-center">
                 <Mail className="w-4 h-4" />
