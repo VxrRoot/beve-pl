@@ -13,7 +13,7 @@ const sliderSlides = [
   },
   {
     heading: "MYJNIA I LOGISTYKA",
-    subHeading: "Zajmij się na nalewaniem, a logistykę i mycie zostaw nam.",
+    subHeading: "Zajmij się nalewaniem, a logistykę i mycie zostaw nam.",
     img: slideThreeImage,
   },
   {

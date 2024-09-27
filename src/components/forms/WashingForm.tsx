@@ -1,5 +1,7 @@
 "use client";
 import { Checkbox } from "@/components/ui/checkbox";
+import Image from "next/image";
+import WashingImg from "../../../public/zdjecie-mycie.webp";
 import {
   Form,
   FormControl,
@@ -259,7 +261,7 @@ const WashingForm = () => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex flex-col lg:flex-row">
-          <div className="flex-1 lg:border-[#E5E5E5] lg:border-r lg:pr-10">
+          <div className="flex-1  lg:border-[#E5E5E5] lg:border-r lg:pr-10">
             <h1 className="text-2xl tracking-[-0.5px] mb-6">
               1. Konfiguracja mycia kubków
             </h1>
@@ -458,7 +460,7 @@ const WashingForm = () => {
                   render={({ field }) => (
                     <FormItem className="flex-1">
                       <FormLabel className="text-[1rem] font-bold">
-                        Producent kubków (opcjonalnie)
+                        Producent Twoich kubków (opcjonalnie)
                       </FormLabel>
                       <FormControl>
                         <Input placeholder="Nazwa producenta" {...field} />
@@ -468,6 +470,13 @@ const WashingForm = () => {
                   )}
                 />
               </div>
+            </div>
+            <div className="hidden grow absolute bottom-0  mb-[-18px] lg:flex items-end self-end">
+              <Image
+                src={WashingImg}
+                alt="Kubki beve"
+                className="max-h-[300px] w-auto"
+              />
             </div>
           </div>
           <div className="flex-1 lg:pl-10 ">
@@ -815,9 +824,6 @@ const WashingForm = () => {
                 </span>
               )}
             </Button>
-            <p className="text-center text-xs">
-              Na Twoją wiadomosć odpowiemy w ciągu 48h!
-            </p>
           </div>
         </div>
       </form>

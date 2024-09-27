@@ -100,7 +100,7 @@ export const CompanyEmailTemplate = (props: KoalaWelcomeEmailProps) => (
             )}
             {props.cupProducer && (
               <li style={listElementStyle}>
-                Producent kubków: {props.cupProducer}
+                Producent Twoich kubków: {props.cupProducer}
               </li>
             )}
             {/* Company / Shipment Info */}

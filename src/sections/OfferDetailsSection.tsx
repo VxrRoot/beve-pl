@@ -9,7 +9,7 @@ import complexServicesImg from "../../public/comfort-offer-img.png";
 const mono = DM_Mono({ weight: ["500"], subsets: [] });
 
 const adventages = [
-  "Wypdorukowany w <span class='font-bold'> Europie </span>",
+  "Wyprodukowany w <span class='font-bold'> Europie </span>",
   "Materiał <span class='font-bold'> w 100% do recyklingu </span> (PP)",
   "Spełnia normy dyrektywy <span class='font-bold'> sup - UE 2019 / 904 </span>",
   "W ofercie pojemniki plastikowe <span class='font-bold'> z klapką </span> do logistyki kubka",

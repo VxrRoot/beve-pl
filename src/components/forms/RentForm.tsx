@@ -789,9 +789,6 @@ const RentForm = () => {
                 </span>
               )}
             </Button>
-            <p className="text-center text-xs">
-              Na Twoją wiadomosć odpowiemy w ciągu 48h!
-            </p>
           </div>
         </div>
       </form>

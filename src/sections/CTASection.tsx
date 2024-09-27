@@ -2,7 +2,7 @@ import CTAButton from "@/components/CTAButton";
 import ContainerLayout from "@/layouts/ContainerLayout";
 import { Mail, Phone } from "lucide-react";
 import { DM_Mono } from "next/font/google";
-import ctaImage from "../../public/cta-image.png";
+import ctaImage from "../../public/cta-image.webp";
 import React from "react";
 import Image from "next/image";
 import LogoWhite from "@/icons/LogoWhite";
@@ -39,13 +39,13 @@ const CTASection = () => {
               </a>
             </div>
           </div>
-          <div className="relative w-full md:absolute h-52 bottom-0 right-0 md:w-1/2">
+          <div className="relative  pt-8 w-full md:absolute h-52 md:h-full bottom-0 right-0 md:w-1/2">
             <Image
               src={ctaImage}
               alt="Kubki beve"
               width={2000}
               height={2000}
-              className="bg-cover bg-center -bottom-8 max-w-[20rem] md:max-w-full absolute md:bottom-0 "
+              className="bg-cover bg-center  w-auto max-h-full max-w-[20rem] md:max-w-full absolute md:bottom-0 right-0"
             />
           </div>
         </div>

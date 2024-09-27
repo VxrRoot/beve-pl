@@ -255,7 +255,7 @@ const SubleaseForm = () => {
                 render={({ field }) => (
                   <FormItem className="flex-1">
                     <FormLabel className="text-[1rem] font-bold">
-                      Producent kubków:
+                      Producent Twoich kubków:
                     </FormLabel>
                     <FormControl>
                       <Input placeholder="Nazwa producenta" {...field} />
@@ -686,9 +686,6 @@ const SubleaseForm = () => {
                 </span>
               )}
             </Button>
-            <p className="text-center text-xs">
-              Na Twoją wiadomosć odpowiemy w ciągu 48h!
-            </p>
           </div>
         </div>
       </form>
