@@ -53,11 +53,11 @@ const HeroSlider = ({ slides }: IProps) => {
             <div className="lg:h-[500px] flex flex-col lg:flex-row 1xl:pl-[130px] text-white">
               <div className="w-full max-w-[420px] px-4 lg:px-0 pb-14 lg:pb-0 pt-14 order-2 lg:order-1">
                 <h3
-                  className={`text-[2rem] lg:text-[2.5rem] leading-[2.8rem] ${mono.className}`}
+                  className={`text-[2rem] lg:text-[2.5rem] leading-[2.8rem] 3xl:text-[3.5rem] 3xl:leading-[3.8rem] ${mono.className}`}
                 >
                   {heading}
                 </h3>
-                <h4 className="mt-6">{subHeading}</h4>
+                <h4 className="mt-6 3xl:text-2xl">{subHeading}</h4>
                 <Link
                   className={`${mono.className} mt-8 hover:underline transition-all whitespace-nowrap w-fit  flex items-center justify-center  tracking-[1.06px] py-3  rounded-[6px]  text-white uppercase`}
                   href={"/#oferta"}

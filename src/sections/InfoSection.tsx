@@ -11,7 +11,7 @@ const fingerPaint = Finger_Paint({ subsets: [], weight: ["400"] });
 
 const InfoSection = () => {
   return (
-    <section className="text-white bg-gradient-to-r from-primaryGreen to-secondaryGreen py-[4.5rem]">
+    <section className="text-white bg-gradient-to-r from-primaryGreen to-secondaryGreen py-[4.5rem] ">
       <ContainerLayout>
         <div className="flex flex-col lg:flex-row">
           <div className="flex-1">

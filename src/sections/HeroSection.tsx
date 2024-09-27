@@ -26,7 +26,7 @@ const sliderSlides = [
 
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-to-r from-primaryGreen to-secondaryGreen">
+    <section className="bg-gradient-to-r from-primaryGreen max-w-[1440px] mx-auto to-secondaryGreen 3xl:rounded-3xl overflow-hidden">
       <div className="hidden">
         {sliderSlides.map((slide, index) => (
           <div key={index}>
