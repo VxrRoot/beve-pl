@@ -9,7 +9,7 @@ const ContactLayout = ({ children }: { children: React.ReactNode }) => {
       <ContainerLayout>
         <ContactNav />
         <div
-          className={`bg-white p-6 pt-10 lg:p-10 mt-[-12px] rounded-[13px] mb-8`}
+          className={`bg-white overflow-hidden p-6 pt-10 lg:p-10 mt-[-12px] rounded-[13px] mb-8`}
         >
           {children}
         </div>

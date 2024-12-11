@@ -260,8 +260,8 @@ const WashingForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col lg:flex-row">
-          <div className="flex-1  lg:border-[#E5E5E5] lg:border-r lg:pr-10">
+        <div className="flex flex-col lg:flex-row ">
+          <div className="flex-1  lg:border-[#E5E5E5]  relative  lg:border-r lg:pr-10">
             <h1 className="text-2xl tracking-[-0.5px] mb-6">
               1. Konfiguracja mycia kubków
             </h1>
@@ -471,7 +471,7 @@ const WashingForm = () => {
                 />
               </div>
             </div>
-            <div className="hidden grow absolute bottom-0  mb-[-18px] lg:flex items-end self-end">
+            <div className="hidden grow absolute -bottom-6  mb-[-18px] lg:flex items-end self-end">
               <Image
                 src={WashingImg}
                 alt="Kubki beve"
